@@ -1,2 +1,3 @@
-# customneo4j
-A customised Neo4j Database :whale: 
+# custom neo4j
+
+A customized Neo4j Database :whale:
