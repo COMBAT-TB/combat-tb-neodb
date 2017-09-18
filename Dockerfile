@@ -24,17 +24,12 @@ VOLUME /data
 COPY plugins/*.jar plugins/
 COPY plugins/*.html guides/
 
-ENV NEO4J_dbms_read__only=true
-
-ENV NEO4J_dbms_unmanaged__extension__classes='extension.web=/guides'
-
-ENV NEO4J_org_neo4j_server_guide_directory='data/guides'
-
-ENV NEO4J_dbms__allow__format__migration=true
-
+ENV NEO4J_dbms_read__only=true \
+    NEO4J_dbms_unmanaged__extension__classes='extension.web=/guides' \
+    NEO4J_org_neo4j_server_guide_directory='data/guides' \
+    NEO4J_dbms__allow__format__migration=true \
+    NEO4J_dbms_security_procedures_unrestricted='apoc.\\\*'
 # ENV NEO4J_dbms_browser_remote__content__hostname__whitelist='http://localhost:7474/'
-
-ENV NEO4J_dbms_security_procedures_unrestricted='apoc.\\\*'
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
