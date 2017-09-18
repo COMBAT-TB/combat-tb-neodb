@@ -24,6 +24,8 @@ VOLUME /data
 COPY plugins/*.jar plugins/
 COPY plugins/*.html guides/
 
+ENV NEO4J_dbms_read__only=true
+
 ENV NEO4J_dbms_unmanaged__extension__classes='extension.web=/guides'
 
 ENV NEO4J_org_neo4j_server_guide_directory='data/guides'
