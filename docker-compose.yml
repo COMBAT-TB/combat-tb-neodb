@@ -5,15 +5,14 @@ services:
     build: . 
     environment:
       NEO4J_AUTH: none
-#      Tuning
+    #  Tuning
       # NEO4J_dbms_memory_pagecache_size: 8G
       # NEO4J_dbms_memory_heap_initial__size: 4G
       # NEO4J_dbms_memory_heap_max__size: 4G
-    volumes:
-      - db_data:/data
+    volumes_from:
+      - dc
     ports:
       - "7687:7687"
       - "7474:7474"
-
-volumes:
-  db_data:
+  dc:
+    build: dc/

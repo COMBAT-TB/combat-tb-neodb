@@ -40,4 +40,5 @@ COPY docker-entrypoint.sh /docker-entrypoint.sh
 EXPOSE 7474 7473 7687
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
+
 CMD ["neo4j"]
