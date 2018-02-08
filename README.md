@@ -1,12 +1,13 @@
 # combatTB Database
 
-[![Docker Repository on Quay](https://quay.io/repository/thoba/neo4j/status "Docker Repository on Quay")](https://quay.io/repository/thoba/neo4j)
-
 combatTB Neo4j Database :whale:
 ## Up and Running
 
+* Assuming you have `docker` and `docker-compose` installed.
+
 ```sh
-$ docker-compose up -d
+$ docker-compose up --build -d
+Building
 ```
 
 Point your browser to [localhost:7474](http://0.0.0.0:7474).
