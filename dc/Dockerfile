@@ -1,6 +1,5 @@
 FROM python:2.7-alpine
-MAINTAINER Thoba Lose "thoba@sanbi.ac.za"
-
+LABEL maintainer="thoba@sanbi.ac.za"
 RUN mkdir /data \
     && apk update \
     && apk add --no-cache curl \

@@ -1,6 +1,9 @@
 # combatTB Database
 
+[![Build Status](https://travis-ci.org/COMBAT-TB/neo4j_db.svg?branch=master)](https://travis-ci.org/COMBAT-TB/neo4j_db)
+
 combatTB Neo4j Database :whale:
+
 ## Up and Running
 
 * Assuming you have `docker` and `docker-compose` installed.

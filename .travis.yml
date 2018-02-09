@@ -3,14 +3,13 @@ os:
 dist: trusty
 sudo: required
 
-env:
-  - DOCKER_COMPOSE_VERSION=1.19.0
-
-before_install:
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
+services:
+  - docker
+  
+before_script:
+  - docker-compose up --build -d
+  - pip install --user -r requirements.txt
+  - sleep 10
 
 script:
-  - docker-compose up --build -d
+  - travis_wait 30 pytest -v test/
