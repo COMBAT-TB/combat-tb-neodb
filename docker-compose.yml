@@ -16,3 +16,8 @@ services:
       - "7474:7474"
   dc:
     build: dc/
+  es:
+    # restart: always
+    build: esdata/
+    ports:
+      - "9200:9200"
