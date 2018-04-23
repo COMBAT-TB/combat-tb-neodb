@@ -43,11 +43,11 @@ Sample query:
 
 ```sh
 $ curl -XGET 'http://localhost:9200/gene/_search?q=katg' | jq .
-% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100   450  100   450    0     0  58946      0 --:--:-- --:--:-- --:--:-- 64285
+100   329  100   329    0     0  53828      0 --:--:-- --:--:-- --:--:-- 54833
 {
-  "took": 5,
+  "took": 3,
   "timed_out": false,
   "_shards": {
     "total": 5,
@@ -55,36 +55,26 @@ $ curl -XGET 'http://localhost:9200/gene/_search?q=katg' | jq .
     "failed": 0
   },
   "hits": {
-    "total": 2,
-    "max_score": 3.870527,
+    "total": 1,
+    "max_score": 3.0729284,
     "hits": [
       {
         "_index": "gene",
         "_type": "Gene",
-        "_id": "16844",
-        "_score": 3.870527,
+        "_id": "12276",
+        "_score": 3.0729284,
         "_source": {
+          "biotype": "protein_coding",
           "uniquename": "Rv1908c",
           "name": "katG",
           "description": [
             "Catalase-peroxidase-peroxynitritase T KatG"
           ]
         }
-      },
-      {
-        "_index": "gene",
-        "_type": "Gene",
-        "_id": "4195",
-        "_score": 3.649168,
-        "_source": {
-          "uniquename": "MT1959",
-          "name": "katG",
-          "description": [
-            "catalase-peroxidase"
-          ]
-        }
       }
     ]
   }
 }
+
+
 ```

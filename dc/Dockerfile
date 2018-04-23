@@ -1,11 +1,17 @@
 FROM python:2.7-alpine
-LABEL maintainer="thoba@sanbi.ac.za"
-RUN mkdir /data \
-    && apk update \
-    && apk add --no-cache curl \
-    && curl -L 'https://drive.google.com/uc?export=download&id=1HQlwEXRU04IQ4fdL7_I48GPi6L7rIkJG' >ctb_database.tar.bz2 \
-    && tar xvfj ctb_database.tar.bz2 \
-    && rm ctb_database.tar.bz2 \
+LABEL Name=combatb_web-dc Version="0.1" Maintainer="thoba@sanbi.ac.za"
+
+RUN apk update \
+    && apk upgrade \
+    && mkdir /data \
+    && apk add --no-cache ca-certificates openssl curl \
+    && update-ca-certificates
+
+ENV DB_VERSION="1222073"
+
+RUN wget "https://zenodo.org/record/${DB_VERSION}/files/gff2neo_db_data.tar.bz2" \
+    -O gff2neo_db_data.tar.bz2 \
+    && tar xvfj gff2neo_db_data.tar.bz2 \
     && cp -r databases /data/
 
 VOLUME /data
