@@ -1,6 +1,7 @@
 # :whale: combatTB Database
 
-[![Build Status](https://travis-ci.org/COMBAT-TB/neo4j_db.svg?branch=master)](https://travis-ci.org/COMBAT-TB/neo4j_db)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1228045.svg)](https://doi.org/10.5281/zenodo.1228045) [![Build Status](https://travis-ci.org/COMBAT-TB/neo4j_db.svg?branch=master)](https://travis-ci.org/COMBAT-TB/neo4j_db)
 
 combatTB Neo4j Database
 
