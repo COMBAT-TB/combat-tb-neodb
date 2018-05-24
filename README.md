@@ -47,9 +47,9 @@ Sample query:
 $ curl -XGET 'http://localhost:9200/gene/_search?q=katg' | jq .
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100   329  100   329    0     0  53828      0 --:--:-- --:--:-- --:--:-- 54833
+100   380  100   380    0     0  65168      0 --:--:-- --:--:-- --:--:-- 76000
 {
-  "took": 3,
+  "took": 2,
   "timed_out": false,
   "_shards": {
     "total": 5,
@@ -58,20 +58,21 @@ $ curl -XGET 'http://localhost:9200/gene/_search?q=katg' | jq .
   },
   "hits": {
     "total": 1,
-    "max_score": 3.0729284,
+    "max_score": 2.4831636,
     "hits": [
       {
         "_index": "gene",
         "_type": "Gene",
-        "_id": "12276",
-        "_score": 3.0729284,
+        "_id": "10106",
+        "_score": 2.4831636,
         "_source": {
           "biotype": "protein_coding",
           "uniquename": "Rv1908c",
           "name": "katG",
           "description": [
             "Catalase-peroxidase-peroxynitritase T KatG"
-          ]
+          ],
+          "category": "virulence, detoxification, adaptation"
         }
       }
     ]
