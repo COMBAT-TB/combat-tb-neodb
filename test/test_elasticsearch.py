@@ -9,7 +9,7 @@ def test_indices():
     Get the number of indices
     """
     indices = len(es_client.indices.get_alias("*"))
-    assert indices == 12
+    assert indices == 13
 
 
 def test_es_search():
