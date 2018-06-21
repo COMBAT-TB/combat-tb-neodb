@@ -7,7 +7,7 @@ RUN apk update \
     && apk add --no-cache ca-certificates openssl curl \
     && update-ca-certificates
 
-ENV DB_VERSION="1260446"
+ENV DB_VERSION="1291918"
 
 RUN wget "https://zenodo.org/record/${DB_VERSION}/files/gff2neo_db_data.tar.bz2" \
     -O gff2neo_db_data.tar.bz2 \
