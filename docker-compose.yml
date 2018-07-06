@@ -1,5 +1,15 @@
 version: '2'
 services:
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    links:
+      - db
+      - es
   db:
     # restart: always
     build: . 

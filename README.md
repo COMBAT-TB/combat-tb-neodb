@@ -10,7 +10,7 @@ This repo builds the combatTB Neo4j Graph database backed by Elasticsearch
 
 ## Up and Running
 
-* Assuming you have [docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/overview/) installed.
+- Assuming you have [docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/overview/) installed.
 
 ```sh
 $ docker-compose up --build -d
@@ -19,7 +19,7 @@ Building
 
 ### Neo4j
 
-Point your browser to [localhost:7474](http://0.0.0.0:7474) to access the Neo4j browser.
+Point your browser to [localhost](http://localhost) to access the Neo4j browser.
 To view the schema, run:
 
 ```
@@ -34,17 +34,17 @@ MATCH (g:Gene)-[r:ENCODES]->(p:Protein) RETURN g.name as gene, p.name as protein
 
 ### Elasticsearch
 
-Elasticsearch can be accessed on port `9200`, run the following to check the indices:
+Elasticsearch can be accessed on [localhost/es](http://localhost/es) , run the following to check the indices:
 
 ```sh
-$ curl -XGET 'http://localhost:9200/_cat/indices'
+$ curl -XGET 'http://localhost/es/_cat/indices'
 yellow..
 ```
 
 Sample query:
 
 ```sh
-$ curl -XGET 'http://localhost:9200/gene/_search?q=katg' | jq .
+$ curl -XGET 'http://localhost/es/gene/_search?q=katg' | jq .
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100   380  100   380    0     0  65168      0 --:--:-- --:--:-- --:--:-- 76000
