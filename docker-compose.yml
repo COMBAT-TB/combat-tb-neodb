@@ -1,7 +1,7 @@
 version: '2'
 services:
   db:
-    # restart: always
+    restart: always
     build: . 
     environment:
       NEO4J_AUTH: none
@@ -17,7 +17,7 @@ services:
   dc:
     build: dc/
   es:
-    # restart: always
+    restart: always
     build: esdata/
     ports:
       - "9200:9200"

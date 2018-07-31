@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1239572.svg)](https://doi.org/10.5281/zenodo.1239572)
 
-[![Build Status](https://travis-ci.org/COMBAT-TB/neo4j_db.svg?branch=master)](https://travis-ci.org/COMBAT-TB/neo4j_db)
+[![Build Status](https://travis-ci.org/COMBAT-TB/neo4j-db.svg?branch=master)](https://travis-ci.org/COMBAT-TB/neo4j-db)
 
 combatTB Neo4j Database
 
@@ -10,7 +10,7 @@ This repo builds the combatTB Neo4j Graph database backed by Elasticsearch
 
 ## Up and Running
 
-* Assuming you have [docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/overview/) installed.
+- Assuming you have [docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/overview/) installed.
 
 ```sh
 $ docker-compose up --build -d
@@ -22,13 +22,13 @@ Building
 Point your browser to [localhost:7474](http://0.0.0.0:7474) to access the Neo4j browser.
 To view the schema, run:
 
-```
+```java
 call db.schema
 ```
 
 Sample query:
 
-```
+```java
 MATCH (g:Gene)-[r:ENCODES]->(p:Protein) RETURN g.name as gene, p.name as protein LIMIT 25
 ```
 
