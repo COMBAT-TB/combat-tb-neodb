@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1239572.svg)](https://doi.org/10.5281/zenodo.1239572)
 
-[![Build Status](https://travis-ci.org/COMBAT-TB/combatb-dbs.svg?branch=master)](https://travis-ci.org/COMBAT-TB/combatb-db)
+[![Build Status](https://travis-ci.org/COMBAT-TB/combatb-db.svg?branch=master)](https://travis-ci.org/COMBAT-TB/combatb-db)
 
 combatTB Neo4j Database
 
