@@ -3,7 +3,7 @@ LABEL maintainer="thoba@sanbi.ac.za"
 
 COPY elasticsearch.yml config/
 
-ENV DB_VERSION="1291918"
+ENV DB_VERSION="1421060"
 
 RUN wget "https://zenodo.org/record/${DB_VERSION}/files/gff2neo_es_data.tar.bz2" \
     -O gff2neo_es_data.tar.bz2 \

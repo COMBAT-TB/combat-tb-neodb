@@ -1,12 +1,12 @@
 # :whale: combatTB Database
 
-[![Build Status](https://travis-ci.org/COMBAT-TB/combatb-db.svg?branch=master)](https://travis-ci.org/COMBAT-TB/combatb-db) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1239572.svg)](https://doi.org/10.5281/zenodo.1239572)
+[![Build Status](https://travis-ci.org/COMBAT-TB/combatb-db.svg?branch=master)](https://travis-ci.org/COMBAT-TB/combatb-db) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1219127.svg)](https://doi.org/10.5281/zenodo.1219127)
 
 This repo builds the combatTB Neo4j Graph database backed by Elasticsearch
 
 ## Up and Running
 
-### Using [PWD](https://labs.play-with-docker.com/)
+### Using [PWD](https://labs.play-with-docker.com/) :warning::bug:
 
 [![Docker Repository on Quay](https://quay.io/repository/combat-tb/combattb-db/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/combattb-db) [![Docker Repository on Quay](https://quay.io/repository/combat-tb/combattb-dc/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/combattb-dc) [![Docker Repository on Quay](https://quay.io/repository/combat-tb/combattb-es/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/combattb-es)
 
@@ -49,7 +49,9 @@ $ curl -XGET 'http://localhost:9200/_cat/indices'
 yellow..
 ```
 
-Sample query:
+Sample queries:
+
+- Search for `katg` gene.
 
 ```sh
 $ curl -XGET 'http://localhost:9200/gene/_search?q=katg' | jq .
@@ -81,6 +83,150 @@ $ curl -XGET 'http://localhost:9200/gene/_search?q=katg' | jq .
             "Catalase-peroxidase-peroxynitritase T KatG"
           ],
           "category": "virulence, detoxification, adaptation"
+        }
+      }
+    ]
+  }
+}
+```
+
+- Search for variants in `katg` gene.
+
+```sh
+$ curl -XGET 'http://localhost:9200/variant/_search?q=katg' | jq .
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1712  100  1712    0     0  99091      0 --:--:-- --:--:-- --:--:--   98k
+{
+  "took": 8,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 330,
+    "max_score": 1.3146203,
+    "hits": [
+      {
+        "_index": "variant",
+        "_type": "Variant",
+        "_id": "35757",
+        "_score": 1.3146203,
+        "_source": {
+          "consequence": "TG1668T",
+          "pos": "2154444",
+          "gene": "katG",
+          "drug": "isoniazid"
+        }
+      },
+      {
+        "_index": "variant",
+        "_type": "Variant",
+        "_id": "35852",
+        "_score": 1.3146203,
+        "_source": {
+          "consequence": "GA1092G",
+          "pos": "2155020",
+          "gene": "katG",
+          "drug": "isoniazid"
+        }
+      },
+      {
+        "_index": "variant",
+        "_type": "Variant",
+        "_id": "35819",
+        "_score": 1.3146203,
+        "_source": {
+          "consequence": "GC1038G",
+          "pos": "2155074",
+          "gene": "katG",
+          "drug": "isoniazid"
+        }
+      },
+      {
+        "_index": "variant",
+        "_type": "Variant",
+        "_id": "35983",
+        "_score": 1.3146203,
+        "_source": {
+          "consequence": "Ser700Pro",
+          "pos": "2154014",
+          "gene": "katG",
+          "drug": "isoniazid"
+        }
+      },
+      {
+        "_index": "variant",
+        "_type": "Variant",
+        "_id": "33546",
+        "_score": 1.3146203,
+        "_source": {
+          "consequence": "Leu634Phe",
+          "pos": "2154212",
+          "gene": "katG",
+          "drug": "isoniazid"
+        }
+      },
+      {
+        "_index": "variant",
+        "_type": "Variant",
+        "_id": "36040",
+        "_score": 1.3146203,
+        "_source": {
+          "consequence": "Gly593Asp",
+          "pos": "2154334",
+          "gene": "katG",
+          "drug": "isoniazid"
+        }
+      },
+      {
+        "_index": "variant",
+        "_type": "Variant",
+        "_id": "33547",
+        "_score": 1.3146203,
+        "_source": {
+          "consequence": "Ala574Val",
+          "pos": "2154391",
+          "gene": "katG",
+          "drug": "isoniazid"
+        }
+      },
+      {
+        "_index": "variant",
+        "_type": "Variant",
+        "_id": "35966",
+        "_score": 1.3146203,
+        "_source": {
+          "consequence": "Asp573Asn",
+          "pos": "2154395",
+          "gene": "katG",
+          "drug": "isoniazid"
+        }
+      },
+      {
+        "_index": "variant",
+        "_type": "Variant",
+        "_id": "35873",
+        "_score": 1.3146203,
+        "_source": {
+          "consequence": "Ala550Asp",
+          "pos": "2154463",
+          "gene": "katG",
+          "drug": "isoniazid"
+        }
+      },
+      {
+        "_index": "variant",
+        "_type": "Variant",
+        "_id": "36041",
+        "_score": 1.3146203,
+        "_source": {
+          "consequence": "Gln525Pro",
+          "pos": "2154538",
+          "gene": "katG",
+          "drug": "isoniazid"
         }
       }
     ]
