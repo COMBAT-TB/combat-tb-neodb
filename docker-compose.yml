@@ -1,14 +1,14 @@
-version: '2'
+version: "2"
 services:
   db:
-    restart: always
-    build: . 
+    # restart: always
+    build: .
     environment:
       NEO4J_AUTH: none
     #  Tuning
-      # NEO4J_dbms_memory_pagecache_size: 8G
-      # NEO4J_dbms_memory_heap_initial__size: 4G
-      # NEO4J_dbms_memory_heap_max__size: 4G
+    # NEO4J_dbms_memory_pagecache_size: 8G
+    # NEO4J_dbms_memory_heap_initial__size: 4G
+    # NEO4J_dbms_memory_heap_max__size: 4G
     volumes_from:
       - dc
     ports:
@@ -17,7 +17,7 @@ services:
   dc:
     build: dc/
   es:
-    restart: always
+    # restart: always
     build: esdata/
     ports:
       - "9200:9200"
