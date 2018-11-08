@@ -1,7 +1,7 @@
 version: "2"
 services:
   db:
-    # restart: always
+    restart: always
     build: .
     environment:
       NEO4J_AUTH: none
@@ -20,8 +20,13 @@ services:
     build: dc/
     network_mode: "bridge"
   es:
-    # restart: always
+    restart: always
     build: esdata/
     network_mode: "bridge"
     ports:
       - "9200:9200"
+networks:                                
+  default:                               
+    driver: bridge                       
+    driver_opts:                         
+      com.docker.network.driver.mtu: 1450
