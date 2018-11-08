@@ -2,9 +2,13 @@
 
 [![Build Status](https://travis-ci.org/COMBAT-TB/combatb-db.svg?branch=master)](https://travis-ci.org/COMBAT-TB/combatb-db) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1219127.svg)](https://doi.org/10.5281/zenodo.1219127)
 
-This repo builds the combatTB Neo4j Graph database backed by Elasticsearch
+This repository builds the combatTB Neo4j Graph database backed by Elasticsearch
 
 ## Up and Running
+
+### Deploy to OpenStack using `terraform`
+
+[OpenStack deployment](./deploy/openstack/README.md)
 
 ### Using [PWD](https://labs.play-with-docker.com/) :warning::bug:
 

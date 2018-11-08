@@ -109,3 +109,13 @@ data/drugbank/pharmacologically_active.csv
 data/string
 data/gff_files
 data/*.bz2
+
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfvars files
+*.tfvars
