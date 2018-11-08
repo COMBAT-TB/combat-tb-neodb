@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM alpine:3.8
 LABEL Name=combatb_web-dc Version="0.1" Maintainer="thoba@sanbi.ac.za"
 
 RUN apk update \
