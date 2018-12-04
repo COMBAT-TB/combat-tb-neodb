@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/COMBAT-TB/combatb-db.svg?branch=master)](https://travis-ci.org/COMBAT-TB/combatb-db) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1219127.svg)](https://doi.org/10.5281/zenodo.1219127)
 
+[![Docker Repository on Quay](https://quay.io/repository/combat-tb/combattb-db/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/combattb-db) [![Docker Repository on Quay](https://quay.io/repository/combat-tb/combattb-dc/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/combattb-dc) [![Docker Repository on Quay](https://quay.io/repository/combat-tb/combattb-es/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/combattb-es)
+
 This repository builds the combatTB Neo4j Graph database backed by Elasticsearch
 
 ## Up and Running
@@ -9,16 +11,6 @@ This repository builds the combatTB Neo4j Graph database backed by Elasticsearch
 ### Deploy to OpenStack using `terraform`
 
 To deploy the COMBAT-TB database to OpenStack, kindly head to [deployment README](./deploy/openstack/).
-
-### Using [PWD](https://labs.play-with-docker.com/) :warning::bug:
-
-[![Docker Repository on Quay](https://quay.io/repository/combat-tb/combattb-db/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/combattb-db) [![Docker Repository on Quay](https://quay.io/repository/combat-tb/combattb-dc/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/combattb-dc) [![Docker Repository on Quay](https://quay.io/repository/combat-tb/combattb-es/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/combattb-es)
-
-Click the _Try in PWD_ button below to get 4 hours to try it out in the cloud.
-
-- _[DockerHub](https://hub.docker.com/) account needed._
-
-[![Try in PWD](https://cdn.rawgit.com/play-with-docker/stacks/cff22438/assets/images/button.png)](http://play-with-docker.com?stack=https://raw.githubusercontent.com/COMBAT-TB/combatb-db/dev/stack.yml)
 
 ### Using `docker-compose`
 

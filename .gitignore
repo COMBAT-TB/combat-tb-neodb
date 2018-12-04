@@ -104,6 +104,7 @@ ENV/
 #Dev
 .idea
 .vscode
+.envrc
 
 data/drugbank/pharmacologically_active.csv
 data/string
