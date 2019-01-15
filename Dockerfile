@@ -1,4 +1,4 @@
-FROM neo4j:3.4
+FROM neo4j:3.5
 
 COPY plugins/*.jar plugins/
 COPY guides/*.html guides/
