@@ -1,6 +1,6 @@
 # :whale: combatTB Database
 
-[![Build Status](https://travis-ci.org/COMBAT-TB/combatb-db.svg?branch=master)](https://travis-ci.org/COMBAT-TB/combatb-db) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1219127.svg)](https://doi.org/10.5281/zenodo.1219127)
+[![Build Status](https://travis-ci.org/COMBAT-TB/combat-tb-db.svg?branch=master)](https://travis-ci.org/COMBAT-TB/combat-tb-db) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1219127.svg)](https://doi.org/10.5281/zenodo.1219127)
 
 [![Docker Repository on Quay](https://quay.io/repository/combat-tb/combattb-db/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/combattb-db) [![Docker Repository on Quay](https://quay.io/repository/combat-tb/combattb-dc/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/combattb-dc) [![Docker Repository on Quay](https://quay.io/repository/combat-tb/combattb-es/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/combattb-es)
 
