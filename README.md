@@ -12,7 +12,7 @@ This repository builds the combatTB Neo4j Graph database backed by Elasticsearch
 
 To deploy the COMBAT-TB database to OpenStack, kindly head to [deployment README](./deploy/openstack/).
 
-### Using `docker` and `docker-compose`
+### Locally using `docker` and `docker-compose`
 
 Assuming you have [docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/overview/) installed.
 
