@@ -5,6 +5,8 @@ verify_ssl = true
 
 [dev-packages]
 mkdocs = "*"
+pytest = "==3.4.0"
+
 
 [packages]
 asn1crypto = "==0.24.0"
@@ -29,7 +31,6 @@ py2neo = "==3.1.2"
 pycodestyle = "==2.3.1"
 pycparser = "==2.18"
 pyflakes = "==1.6.0"
-pytest = "==3.4.0"
 python-dateutil = "==2.6.1"
 six = "==1.11.0"
 urllib3 = ">=1.23"
