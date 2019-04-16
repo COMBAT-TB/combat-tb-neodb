@@ -7,12 +7,18 @@ Cypher is a declarative graph query language that allows for expressive and effi
 Point your browser to [localhost:7474](http://0.0.0.0:7474) to access the Neo4j browser.
 To view the schema, run:
 
-```cypher
-call db.schema
+```java
+call db.schema.visualization
 ```
 
-### Find all genes that encode proteins
+### Find genes that encode proteins, limiting to results to 25
 
-```cypher
+```java
 MATCH (g:Gene)-[r:ENCODES]->(p:Protein) RETURN g.name as gene, p.name as protein LIMIT 25
+```
+
+### Which genes encode a protein that interacts with a known drug target
+
+```java
+MATCH(gene)-[:ENCODES]-(p1:Protein)-[:INTERACTS_WITH]-(p2:Protein)-[:TARGET]-(drug:Drug) RETURN *
 ```

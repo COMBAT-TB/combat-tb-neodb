@@ -1,43 +1,50 @@
 <article class="guide">
     <carousel class="deck container-fluid">
         <slide class="row-fluid">
-            <div class="col-sm-3">
-                <h3>COMBAT-TB NeoDB:</h3>
-                <p class="lead">fostering Tuberculosis research through integrative analysis using graph database
-                    technologies</p>
+            <div class="col-sm-6">
+                <h3>COMBAT-TB NeoDB</h3>
+                <br />
+                <div class="paragraph">
+                    <p class="lead">Fostering Tuberculosis research through integrative analysis using graph database
+                        technologies</p>
+                </div>
             </div>
-            <div class="col-sm-9">
-                <p>This is the content in the main column.</p>
-                <ol class="big">
-                    <li>Load: create data from external CSV files</li>
-                    <li>Index: index nodes based on label</li>
-                    <li>Relate: transform foreign key references into data relationships</li>
-                    <li>Promote: transform join records into relationships</li>
-                </ol>
+            <div class="col-sm-6">
+                <div class="imageblock">
+                    <div class="content">
+                        <img src="https://raw.githubusercontent.com/COMBAT-TB/combattbmodel/master/docs/chado_based_graph_model.png"
+                            alt="NeoDB graph model">
+                    </div>
+                </div>
             </div>
         </slide>
         <slide class="row-fluid">
             <div class="col-sm-3">
-                <h3>Title two</h3>
-                <p class="lead">Second lead</p>
+                <h3>Querying the COMBAT-TB NeoDB</h3>
+                <!-- <p class="lead">Example queries</p> -->
             </div>
             <div class="col-sm-9">
+                <div class="paragraph">
+                    <p class="lead">Getting the Schema</p>
+                </div>
                 <figure>
-                    <pre class="pre-scrollable code runnable">CREATE INDEX ON :Product(productID)</pre>
-                    <figcaption>Find the produce suppliers.</figcaption>
+                    <pre class="pre-scrollable code runnable">call db.schema.visualization</pre>
+                    <!-- <figcaption>Find the produce suppliers.</figcaption> -->
                 </figure>
+                <div class="paragraph">
+                    <p class="lead">Find genes that encode proteins, limiting to results to 25</p>
+                </div>
                 <figure>
-                    <pre class="pre-scrollable code runnable">CREATE INDEX ON :Category(categoryID)</pre>
+                    <pre
+                        class="pre-scrollable code runnable">MATCH (g:Gene)-[r:ENCODES]->(p:Protein) RETURN g.name as gene, p.name as protein LIMIT 25</pre>
                 </figure>
+                <div class="paragraph">
+                    <p class="lead">Which genes encode a protein that interacts with a known drug target</p>
+                </div>
                 <figure>
-                    <pre class="pre-scrollable code runnable">CREATE INDEX ON :Supplier(supplierID)</pre>
+                    <pre
+                        class="pre-scrollable code runnable">MATCH(gene)-[:ENCODES]-(p1:Protein)-[:INTERACTS_WITH]-(p2:Protein)-[:TARGET]-(drug:Drug) RETURN *</pre>
                 </figure>
-                <h3>More code</h3>
-                <ul class="undecorated">
-                    <li><a play-topic="movie-graph">Movie Graph</a> - actors &amp; movies</li>
-                    <li><a play-topic="query-template">Query Templates</a> - common ad-hoc queries</li>
-                    <li><a play-topic="cypher">Cypher</a> - query language fundamentals</li>
-                </ul>
             </div>
         </slide>
     </carousel>
