@@ -1,7 +1,7 @@
 FROM neo4j:3.5
 
-COPY plugins/*.jar plugins/
-COPY guides/*.html guides/
+COPY plugins/* plugins/
+COPY guides/*  guides/
 
 ENV NEO4J_AUTH=none \
     NEO4J_dbms_unmanaged__extension__classes='extension.web=/guides' \
