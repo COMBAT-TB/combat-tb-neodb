@@ -34,10 +34,87 @@
           </p>
         </div>
         <div class="paragraph">
-          <p>
+          <p class="lead">
             The next slide contains example queries that can be execute in the
             Neo4j browser.
           </p>
+        </div>
+      </div>
+    </slide>
+    <slide class="row-fluid">
+      <div class="col-sm-12">
+        <h3>Explore NeoDB</h3>
+        <br />
+        <div>
+          <div class="col-lg-3 ng-scope">
+            <h4>Label counts</h4>
+            <br />
+            <div class="paragraph">
+              <p class="lead">
+                In Neo4j, node types are called labels. The following query
+                counts the number of nodes per label. Run it by clicking the
+                text box to prefill the command and then hitting
+                <a tooltip-placement="left" class="circled play sl sl-play"></a>
+                in the upper right.
+              </p>
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="pre-scrollable code runnable">
+MATCH(node) 
+RETURN head(labels(node)) AS label, count(*) AS count 
+ORDER BY count DESC</pre
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 ng-scope">
+            <h4>Relationship type counts</h4>
+            <br />
+            <div class="paragraph">
+              <p class="lead">
+                Play the following query to count the number of relationships
+                per type.
+              </p>
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="pre-scrollable code runnable">
+MATCH()-[rel]->() 
+RETURN type(rel) AS rel_type, 
+count(*) AS count 
+ORDER BY count DESC</pre
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 ng-scope">
+            <h4>Random relationships</h4>
+            <br />
+            <div class="paragraph">
+              <p class="lead">
+                The following query retrieves a random relationship of each
+                type. The query goes through every relationship and thus may
+                take several seconds.
+              </p>
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre class="pre-scrollable code runnable">
+MATCH()-[rel]->() WITH type(rel) AS rel_type, collect(rel) AS rels
+WITH rels[toInteger(rand() * size(rels))] AS rel RETURN startNode(rel), rel, endNode(rel)</pre
+                >
+              </div>
+            </div>
+            <div class="paragraph">
+              <p class="lead">
+                By default, the NeoDB Neo4j Browser only shows relationships
+                that were returned by the query. To show every relationship
+                between the displayed nodes instead, select
+                <code>Connect result nodes</code> under settings.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </slide>
@@ -72,7 +149,7 @@ call db.schema.visualization</pre
         </div>
         <figure>
           <pre class="pre-scrollable code runnable">
-MATCH (g:Gene)-[r:ENCODES]->(p:Protein) RETURN g.name as gene, p.name as protein LIMIT 25</pre
+MATCH(g:Gene)-[r:ENCODES]->(p:Protein) RETURN g.name as gene, p.name as protein LIMIT 25</pre
           >
         </figure>
         <div class="paragraph">
