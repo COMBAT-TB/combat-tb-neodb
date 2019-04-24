@@ -33,7 +33,7 @@ pycparser = "==2.18"
 pyflakes = "==1.6.0"
 python-dateutil = "==2.6.1"
 six = "==1.11.0"
-urllib3 = ">=1.23"
+urllib3 = ">=1.24.2"
 pyOpenSSL = "==17.5.0"
 
 [requires]
