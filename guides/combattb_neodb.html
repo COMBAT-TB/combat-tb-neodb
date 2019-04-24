@@ -13,13 +13,7 @@
       </div>
       <div class="col-sm-10">
         <h3>
-          <a
-            href="https://combattb.org"
-            target="_blank"
-            rel="”noopener"
-            noreferrer”
-            >COMBAT-TB</a
-          >
+          <a href="https://combattb.org" target="_blank" rel="”noopener" noreferrer”>COMBAT-TB</a>
           NeoDB: fostering Tuberculosis research through integrative analysis
           using graph database technologies
         </h3>
@@ -62,9 +56,9 @@
               <div class="content">
                 <pre class="pre-scrollable code runnable">
 MATCH(node) 
-RETURN head(labels(node)) AS label, count(*) AS count 
-ORDER BY count DESC</pre
-                >
+RETURN head(labels(node)) AS label, 
+  count(*) AS count 
+ORDER BY count DESC</pre>
               </div>
             </div>
           </div>
@@ -82,9 +76,8 @@ ORDER BY count DESC</pre
                 <pre class="pre-scrollable code runnable">
 MATCH()-[rel]->() 
 RETURN type(rel) AS rel_type, 
-count(*) AS count 
-ORDER BY count DESC</pre
-                >
+  count(*) AS count 
+ORDER BY count DESC</pre>
               </div>
             </div>
           </div>
@@ -102,8 +95,8 @@ ORDER BY count DESC</pre
               <div class="content">
                 <pre class="pre-scrollable code runnable">
 MATCH()-[rel]->() WITH type(rel) AS rel_type, collect(rel) AS rels
-WITH rels[toInteger(rand() * size(rels))] AS rel RETURN startNode(rel), rel, endNode(rel)</pre
-                >
+WITH rels[toInteger(rand() * size(rels))] AS rel 
+RETURN startNode(rel), rel, endNode(rel)</pre>
               </div>
             </div>
             <div class="paragraph">
@@ -120,8 +113,8 @@ WITH rels[toInteger(rand() * size(rels))] AS rel RETURN startNode(rel), rel, end
     </slide>
     <slide class="row-fluid">
       <div class="col-sm-4">
-        <h3>Querying the COMBAT-TB NeoDB</h3>
-        <!-- <p class="lead">Example queries</p> -->
+        <h3>Learn how to query NeoDB using Cypher</h3>
+        <p class="lead">Part 1</p>
         <br />
         <div class="imageblock">
           <div class="content">
@@ -134,45 +127,149 @@ WITH rels[toInteger(rand() * size(rels))] AS rel RETURN startNode(rel), rel, end
       </div>
       <div class="col-sm-8">
         <div class="paragraph">
-          <p class="lead">Getting the Schema</p>
+          <p class="lead">
+            <strong>Getting the Schema</strong>
+          </p>
         </div>
         <figure>
           <pre class="pre-scrollable code runnable">
 call db.schema.visualization</pre
           >
-          <!-- <figcaption>Find the produce suppliers.</figcaption> -->
         </figure>
         <div class="paragraph">
           <p class="lead">
-            Find genes that encode proteins, limiting to results to 25
+            <strong>Find genes that encode proteins, limiting to results to 25</strong>
+          </p>
+        </div>
+        <pre class="pre-scrollable code runnable">
+MATCH(g:Gene)-[r:ENCODES]->(p:Protein) 
+RETURN g.name as gene, p.name as protein 
+LIMIT 25
+</pre>
+        </figure>
+        <div class="paragraph">
+          <p class="lead">
+            <strong>Which genes encode a protein that interacts with a known drug target</strong>
           </p>
         </div>
         <figure>
           <pre class="pre-scrollable code runnable">
-MATCH(g:Gene)-[r:ENCODES]->(p:Protein) RETURN g.name as gene, p.name as protein LIMIT 25</pre
-          >
+MATCH p=(gene)-[:ENCODES]-(p1:Protein)-[:INTERACTS_WITH]-(p2:Protein)-[:TARGET]-(drug) 
+RETURN p
+</pre>
         </figure>
         <div class="paragraph">
           <p class="lead">
-            Which genes encode a protein that interacts with a known drug target
+            <strong>Find a drugs that targets a set of proteins.</strong>
+            (return results as a table)
           </p>
         </div>
         <figure>
           <pre class="pre-scrollable code runnable">
-MATCH(gene)-[:ENCODES]-(p1:Protein)-[:INTERACTS_WITH]-(p2:Protein)-[:TARGET]-(drug:Drug) RETURN *</pre
-          >
+MATCH(p:Protein)-[:TARGET]-(drug) WITH drug, count(p) AS ProteinSetSize, collect(p.uniquename) AS ProteinSet 
+WHERE ProteinSetSize > 1 
+RETURN drug.name AS DrugName, drug.accession AS DrugAcc, ProteinSet, ProteinSetSize ORDER BY ProteinSetSize DESC </pre>
         </figure>
-        <div class="paragraph">
+                <div class="paragraph">
           <p class="lead">
-            Find a drugs that targets a set of proteins.
+            <strong>Find proteins that are targeted by multiple drugs.</strong>
+            (return results as a table)
           </p>
         </div>
         <figure>
           <pre class="pre-scrollable code runnable">
-MATCH(p:Protein)-[:TARGET]-(drug) WITH drug, count(p) AS ProteinSetSize, collect(protein.uniquename) AS ProteinSet 
-WHERE ProteinSetSize > 1 RETURN drug.name AS DrugName, drug.accession AS DrugAcc, ProteinSet, ProteinSetSize ORDER BY ProteinSetSize DESC</pre
-          >
+MATCH(drug:Drug)-[:TARGET]-(protein) WITH protein, count(drug) as DrugCount, 
+  collect(drug.name) as DrugNames, protein.uniquename as Proteins, 
+  protein.function as ProteinFunctions 
+WHERE DrugCount > 1 
+RETURN Proteins, ProteinFunctions, DrugCount, DrugNames ORDER BY DrugCount DESC </pre>
         </figure>
+      </div>
+    </slide>
+
+    <slide class="row-fluid">
+      <div class="col-sm-12">
+        <h3>Learn how to query NeoDB using Cypher</h3>
+        <p class="lead">Part 2</p>
+        <br />
+        <div class="paragraph">
+          <p class="lead">
+            Scientists at Janssen Pharmaceutica have characterized a novel resistance mechanism to Bedaquiline (BDQ), 
+            a second line antibiotic for the treatment of MDR-TB. The research 
+            <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0102135" target="_blank" rel="”noopener" noreferrer”>study</a>, 
+            published in Plos One, reported that non-target based resistance to BDQ, and cross-resistance to clofazimine (CFZ), 
+            is due to mutations in <code>Rv0678</code>, a transcriptional repressor of the genes encoding the MmpS5-MmpL5 efflux pump.
+          </p>
+        </div>
+        <div>
+          <div class="paragraph">
+            <p>
+              Here are some simple queries to help new users get acquainted with
+              Cypher and NeoDB.
+            </p>
+          </div>
+          <div class="olist arabic">
+            <ol class="arabic">
+              <li>
+                <p>
+                  <strong>Retrieve the <code>Rv0678</code> Gene node:</strong>
+                </p>
+                <div class="listingblock">
+                  <figure>
+                    <pre class="pre-scrollable code runnable">
+MATCH(gene:Gene {uniquename: "Rv0678"}) RETURN gene</pre>  
+                  </figure>
+                </div>
+                <div class="paragraph">
+                  <p>Which is equivalent to:</p>
+                </div>
+                <div class="listingblock">
+                  <figure>
+                    <pre class="pre-scrollable code runnable">
+MATCH(gene:Gene) WHERE gene.uniquename = "Rv0678" RETURN gene</pre>
+                  </figure>
+                </div>
+              </li>
+              <li>
+                <p>
+                  <strong>
+                  Find all Gene Ontology terms <code>ASSOCIATED_WITH</code><code>Rv0678</code>:
+                  </strong>
+                </p>
+                <div class="listingblock">
+                  <figure>
+                    <pre class="pre-scrollable code runnable">
+MATCH path=(:Gene {uniquename: "Rv0678"})-[:ENCODES]-(:Protein)-[:ASSOCIATED_WITH]-(:GOTerm)
+RETURN path</pre>
+                  </figure>
+                </div>
+              </li>
+     
+              <li>
+                <p>
+                  <strong>
+                    Find all genes <code>ASSOCIATED_WITH</code> <code>Rv0678</code> GO terms:
+                  </strong>
+                </p>
+                <div class="listingblock">
+                  <figure>
+                    <pre class="pre-scrollable code runnable">
+MATCH(:Gene {uniquename: "Rv0678"})--(:Protein)--(go:GOTerm)
+WITH collect(go.accession) as go_terms 
+UNWIND go_terms as go MATCH(gene:Gene)--(:Protein)--(:GOTerm {accession: go}) 
+RETURN collect(distinct(gene.name)) as genes, count(distinct(gene.name)) as gene_count</pre>
+                  </figure>
+                </div>
+              </li>
+            </ol>
+          </div>
+          <div class="paragraph">
+            <p>
+              For more advanced examples, see
+              <a href="https://combat-tb-db.readthedocs.io/en/latest/example-cypher-queries/">documentation</a>.
+            </p>
+          </div>
+        </div>
       </div>
     </slide>
   </carousel>
