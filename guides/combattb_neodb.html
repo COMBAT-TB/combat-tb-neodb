@@ -204,7 +204,7 @@ RETURN Proteins, ProteinFunctions, DrugCount, DrugNames ORDER BY DrugCount DESC 
         <div>
           <div class="paragraph">
             <p>
-              Here are some simple queries to help new users get acquainted with
+              Here are some simple queries about <code>Rv0678</code> to help new users get acquainted with
               Cypher and NeoDB.
             </p>
           </div>
@@ -258,6 +258,70 @@ MATCH(:Gene {uniquename: "Rv0678"})--(:Protein)--(go:GOTerm)
 WITH collect(go.accession) as go_terms 
 UNWIND go_terms as go MATCH(gene:Gene)--(:Protein)--(:GOTerm {accession: go}) 
 RETURN collect(distinct(gene.name)) as genes, count(distinct(gene.name)) as gene_count</pre>
+                  </figure>
+                </div>
+              </li>
+            </ol>
+          </div>
+          <div class="paragraph">
+            <p>
+              For more advanced examples, see
+              <a href="https://combat-tb-db.readthedocs.io/en/latest/example-cypher-queries/">documentation</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </slide>
+    <slide class="row-fluid">
+      <div class="col-sm-12">
+        <h3>Learn how to query NeoDB using Cypher</h3>
+        <p class="lead">Part 3</p>
+        <br />
+        <div class="paragraph">
+          <p class="lead">
+            Gene Ontology (GO) annotation is a way to describe the characteristics of 
+            gene products using a controlled vocabulary. The attributes of a gene 
+            product that we capture are; where in the cell it is located (Cellular Component), 
+            what role it has (Molecular Function) and what pathways and 
+            processes it is involved in (Biological Process).
+          </p>
+        </div>
+        <div>
+          <div class="paragraph">
+            <p>
+              Here are some simple queries about GO to help new users get acquainted with
+              Cypher and NeoDB.
+            </p>
+          </div>
+          <div class="olist arabic">
+            <ol class="arabic">
+              <li>
+                <p>
+                  <strong>
+                  Find all Gene Ontology terms <code>ASSOCIATED_WITH</code><code>Rv0678</code>:
+                  </strong>
+                </p>
+                <div class="listingblock">
+                  <figure>
+                    <pre class="pre-scrollable code runnable">
+MATCH path=(:Gene {uniquename: "Rv0678"})-[:ENCODES]-(:Protein)-[:ASSOCIATED_WITH]-(:GOTerm)
+RETURN path</pre>
+                  </figure>
+                </div>
+              </li>
+     
+              <li>
+                <p>
+                  <strong>
+                    Find all genes <code>ASSOCIATED_WITH</code> GO terms containing <code>methylation</code>:
+                  </strong>
+                </p>
+                <div class="listingblock">
+                  <figure>
+                    <pre class="pre-scrollable code runnable">
+MATCH(go:GOTerm)--()--(gene:Gene) 
+WHERE tolower(go.name) CONTAINS 'methylation' 
+RETURN go.name AS go_name, go.accession AS go_id,go.ontology AS go_ontology, collect(gene.name) AS genes</pre>
                   </figure>
                 </div>
               </li>
