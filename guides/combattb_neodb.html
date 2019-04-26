@@ -20,17 +20,27 @@
         <br />
         <div class="paragraph">
           <p class="lead">
-            NeoDB is a free and open source integrated M.tuberculosis ‘omics’
-            knowledge-base. NeoDB is based on Neo4j and enables researchers to
-            execute complex federated queries by linking well-known, curated and
-            widely used biological data resources, and supplementary TB variants
-            data from published literature.
+            Computational approaches in recent years have allowed bioinformaticians working on 
+            <i>M.tuberculosis (M.tb)</i> to discover, store, and share a large amount data via 
+            a number of heterogeneous publicly available 
+            biological data resources. Albeit useful, fragmented curation negatively impacts the 
+            researcher’s ability to leverage the data via federated queries.
           </p>
         </div>
         <div class="paragraph">
           <p class="lead">
-            The next slide contains example queries that can be execute in the
-            Neo4j browser.
+            Under the auspices of the Computational Bacterial Analytical Tool-kit for TB 
+            (<a href="https://combattb.org" target="_blank" rel="”noopener" noreferrer”>COMBAT-TB</a>) project, 
+            we developed NeoDB, an integrated <i>M.tb</i> ‘omics’ knowledge-base. NeoDB is based on 
+            <a href="https://neo4j.com" target="_blank" rel="”noopener" noreferrer”>Neo4j</a> 
+            and enables researchers to execute complex federated queries by linking well-known, curated and
+            widely used biological data resources, and supplementary TB variants data from published literature.
+          </p>
+        </div>
+        <div class="paragraph">
+          <p class="lead">
+           <strong>The next slides contain guides on example queries that can be executed in the
+            Neo4j browser.</strong> 
           </p>
         </div>
       </div>
@@ -186,7 +196,6 @@ RETURN Proteins, ProteinFunctions, DrugCount, DrugNames ORDER BY DrugCount DESC 
         </figure>
       </div>
     </slide>
-
     <slide class="row-fluid">
       <div class="col-sm-12">
         <h3>Learn how to query NeoDB using Cypher</h3>
