@@ -1,6 +1,6 @@
 # Using docker
 
-Local installation using `docker` and `docker-compose`
+The fastest was to get a local installation is by using `docker` and `docker-compose`
 
 **Prerequisites**
 
@@ -17,13 +17,10 @@ Building
 ```
 
 The above command will build the combatTB NeoDB Graph database backed by Elasticsearch.
-Once the server is running, it can be queried by going to the web interface on [http://localhost:7474](http://0.0.0.0:7474).
 
-To view the schema, run:
+Once the server is running, visit [http://localhost:7474](http://0.0.0.0:7474). You shall see the following guide to get you familiar with the database.
 
-```java
-call db.schema.visualization
-```
+![neodb-browser-guide](./images/neodbguide.png)
 
 ## Standalone
 
@@ -80,10 +77,4 @@ $ pwd
 $ bin/neo4j start
 ```
 
-and visit [http://localhost:7474](http://localhost:7474) in your web browser.
-
-To view the schema, run:
-
-```java
-call db.schema.visualization
-```
+and visit [http://localhost:7474](http://localhost:7474).
