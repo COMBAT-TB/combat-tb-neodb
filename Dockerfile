@@ -4,6 +4,7 @@ COPY plugins/* plugins/
 
 ENV NEO4J_AUTH=none \
     NEO4J_dbms_unmanaged__extension__classes='extension.web=/guides' \
+    # The extension assumes that you added a 'guides' directory in the "data".
     NEO4J_org_neo4j_server_guide_directory='data/guides' \
     NEO4J_dbms_allow__upgrade=true \
     NEO4J_dbms_allow__format__migration=true \
