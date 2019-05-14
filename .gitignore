@@ -106,10 +106,7 @@ ENV/
 .vscode
 .envrc
 
-data/drugbank/pharmacologically_active.csv
-data/string
-data/gff_files
-data/*.bz2
+nginx/
 
 #  Local .terraform directories
 **/.terraform/*

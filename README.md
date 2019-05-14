@@ -8,7 +8,10 @@ This repository builds the combatTB Neo4j Graph database backed by Elasticsearch
 
 ## Installation
 
-The installation guide can be found [here](https://combat-tb-db.readthedocs.io/en/latest/installation/).
+To avoid the trouble of environment setup,
+[running the database in a Docker container](https://combat-tb-db.readthedocs.io/en/latest/installation/#using-docker) is highly recommended.
+
+Otherwise, a manual installation guide can be found [here](https://combat-tb-db.readthedocs.io/en/latest/installation/#standalone).
 
 ![neodb-browser-guide](docs/images/neodbguide.png)
 

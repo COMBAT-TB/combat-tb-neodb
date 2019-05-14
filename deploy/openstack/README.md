@@ -3,6 +3,8 @@
 This provides a template for deploying the COMBAT-TB database on an OpenStack
 cloud.
 
+**You will need to modify [`variables.tf`](./variables.tf) defaults.**
+
 ## Usage
 
 Download and install [Terraform](https://www.terraform.io/downloads.html):

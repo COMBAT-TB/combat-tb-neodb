@@ -1,9 +1,9 @@
 variable "image" {
-  default = "ubuntu-16.04_working"
+  default = "Ubuntu-xenial-16.04-amd64"
 }
 
 variable "flavor" {
-  default = "m1.medium"
+  default = "ilifu-C"
 }
 
 variable "ssh_key_file" {
@@ -15,5 +15,5 @@ variable "ssh_user_name" {
 }
 
 variable "pool" {
-  default = "public1"
+  default = "Ext_Floating_IP"
 }

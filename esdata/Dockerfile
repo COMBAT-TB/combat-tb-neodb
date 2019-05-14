@@ -1,5 +1,8 @@
-FROM elasticsearch:2.4
+FROM elasticsearch:2.4.4-alpine
 LABEL maintainer="thoba@sanbi.ac.za"
+
+RUN apk update \
+    && apk add --update openssl
 
 COPY elasticsearch.yml config/
 
