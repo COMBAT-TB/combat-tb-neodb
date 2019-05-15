@@ -44,7 +44,7 @@ $ wget https://raw.githubusercontent.com/COMBAT-TB/combat-tb-db/master/guides/co
 && echo 'dbms.security.procedures.unrestricted=apoc.*,algo.*' >> conf/neo4j.conf \
 && echo 'dbms.security.procedures.whitelist=apoc.*, algo.*' >> conf/neo4j.conf \
 && echo 'dbms.unmanaged_extension_classes=extension.web=/guides' >> conf/neo4j.conf \
-&& echo 'org.neo4j.server.guide.directory=guides' >> conf/neo4j.conf \
+&& echo 'org.neo4j.server.guide.directory=data/guides' >> conf/neo4j.conf \
 && echo 'browser.post_connect_cmd=config; play http://localhost:7474/guides/combattb_neodb.html' >> conf/neo4j.conf \
 && echo 'browser.remote_content_hostname_whitelist=*' >> conf/neo4j.conf
 ```

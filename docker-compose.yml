@@ -1,11 +1,5 @@
 version: "2"
 services:
-  cors:
-    restart: always
-    build: cors/
-    network_mode: "bridge"
-    ports:
-      - "7000:7000"
   db:
     restart: always
     build: .
