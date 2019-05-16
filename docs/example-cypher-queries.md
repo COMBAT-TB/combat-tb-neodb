@@ -53,7 +53,7 @@ RETURN startNode(rel), rel, endNode(rel)
 The following query finds genes that encode protein.
 
 ```cql
-MATCH (g:Gene)-[r:ENCODES]->(p:Protein)
+MATCH(g:Gene)-[r:ENCODES]->(p:Protein)
 RETURN g.name as gene, p.name as protein LIMIT 25
 ```
 
@@ -62,8 +62,9 @@ RETURN g.name as gene, p.name as protein LIMIT 25
 The following query finds proteins that interact with known drug targets.
 
 ```cql
-MATCH(gene)-[:ENCODES]-(p1:Protein)-[:INTERACTS_WITH]-(p2:Protein)-[:TARGET]-(drug:Drug)
-RETURN *
+MATCH p=(gene:Gene)-[:ENCODES]-(p1:Protein)-[i:INTERACTS_WITH]-(p2:Protein)-[:TARGET]-(drug:Drug)
+RETURN gene.name as Gene, i.score as Score, p2.uniquename as Interactor, drug.name as Drug
+ORDER BY Score DESC
 ```
 
 ### Find proteins that interact with a certain protein
@@ -71,7 +72,8 @@ RETURN *
 The following query finds proteins that interact with a protein that has 'O06295' as the uniquename or UniProtId.
 
 ```cql
-MATCH p=()-[r:INTERACTS_WITH]-(:Protein {uniquename:'O06295'}) RETURN p
+MATCH p=(:Protein {uniquename:'O06295'})-[r:INTERACTS_WITH]-(:Protein)
+RETURN p
 ```
 
 ### Find the top 10 proteins that interact with a specific protein sorted by score
@@ -129,6 +131,8 @@ RETURN drug,r,protein
 ```
 
 ### Which proteins are indirectly targeted by a specific drug
+
+The following query finds proteins that are indirectly targeted by Rifampicin.
 
 ```cql
 MATCH(drug:Drug {name: "Rifampicin"})--(:Variant)--(g:Gene)--(p:Protein) RETURN *

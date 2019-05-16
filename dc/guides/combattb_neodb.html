@@ -164,8 +164,9 @@ LIMIT 25
         </div>
         <figure>
           <pre class="pre-scrollable code runnable">
-MATCH p=(gene)-[:ENCODES]-(p1:Protein)-[:INTERACTS_WITH]-(p2:Protein)-[:TARGET]-(drug) 
-RETURN p
+MATCH p=(gene:Gene)-[:ENCODES]-(p1:Protein)-[i:INTERACTS_WITH]-(p2:Protein)-[:TARGET]-(drug:Drug)
+RETURN gene.name as Gene, i.score as Score, p2.uniquename as Interactor, drug.name as Drug
+ORDER BY Score DESC
 </pre>
         </figure>
         <div class="paragraph">
@@ -182,10 +183,20 @@ RETURN drug.name AS DrugName, drug.accession AS DrugAcc, ProteinSet, ProteinSetS
         </figure>
                 <div class="paragraph">
           <p class="lead">
+            <strong>Find a drugs that are are targeted by a specific drug (Isoniazid).</strong>
+          </p>
+        </div>
+        <figure>
+          <pre class="pre-scrollable code runnable">
+MATCH(drug:Drug {name: "Isoniazid"})-[r:TARGET]-(protein:Protein)
+RETURN drug,r,protein</pre>
+        </figure>
+          <div class="paragraph">
+          <p class="lead">
             <strong>Find proteins that are targeted by multiple drugs.</strong>
             (return results as a table)
           </p>
-        </div>
+         </div>
         <figure>
           <pre class="pre-scrollable code runnable">
 MATCH(drug:Drug)-[:TARGET]-(protein) WITH protein, count(drug) as DrugCount, 

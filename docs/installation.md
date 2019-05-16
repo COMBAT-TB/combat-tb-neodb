@@ -2,7 +2,7 @@
 
 The fastest was to get a local installation is by using `docker` and `docker-compose`
 
-**Prerequisites**
+_Prerequisites_
 
 - [docker](https://www.docker.com/)
 - [docker-compose](https://docs.docker.com/compose/overview/)
@@ -49,14 +49,14 @@ $ wget https://raw.githubusercontent.com/COMBAT-TB/combat-tb-db/master/guides/co
 && echo 'browser.remote_content_hostname_whitelist=*' >> conf/neo4j.conf
 ```
 
-Download and extract the [COMBAT-TB NeoDB](https://zenodo.org/record/1421060/files/gff2neo_db_data.tar.bz2?download=1):
+Download and extract the [COMBAT-TB NeoDB](https://ndownloader.figshare.com/files/15192035):
 
 ```sh
 $ pwd
 # $HOME/Downloads/neo4j-community-3.5.4
-$ wget "https://zenodo.org/record/1421060/files/gff2neo_db_data.tar.bz2" \
-    -O gff2neo_db_data.tar.bz2
-$ tar -xjvf gff2neo_db_data.tar.bz2
+$ wget "https://ndownloader.figshare.com/files/15192035" \
+    -O neodb_db_data.tar.bz2
+$ tar -xjvf neodb_db_data.tar.bz2
 $ cp -R databases/ data/
 ```
 
@@ -65,10 +65,9 @@ Download the [APOC Procedures](https://github.com/neo4j-contrib/neo4j-apoc-proce
 ```sh
 $ pwd
 # $HOME/Downloads/neo4j-community-3.5.4
-$ wget https://github.com/neo4j-contrib/neo4j-graph-algorithms/releases/download/3.4.12.7/graph-algorithms-algo-3.4.12.7.jar \
--P plugins/ \
-&& wget https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/3.4.0.5/apoc-3.4.0.5-all.jar \
--P plugins/
+$ export NEO4J_CONTRIB="https://github.com/neo4j-contrib"
+$ wget "${NEO4J_CONTRIB}/neo4j-graph-algorithms/releases/download/3.5.4.0/graph-algorithms-algo-3.5.4.0.jar" -P plugins/ \
+  && wget "${NEO4J_CONTRIB}/neo4j-apoc-procedures/releases/download/3.5.0.3/apoc-3.5.0.3-all.jar" -P plugins/
 ```
 
 Run Neo4j as a background process:
