@@ -18,7 +18,6 @@ services:
     ports:
       - "7687:7687"
       - "7474:7474"
-
   dc:
     build: dc/
     network_mode: "bridge"
