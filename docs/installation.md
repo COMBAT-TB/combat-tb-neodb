@@ -16,13 +16,11 @@ $ docker-compose up --build -d
 Building
 ```
 
-The above command will build the combatTB NeoDB Graph database backed by Elasticsearch.
-
 Once the server is running, visit [http://localhost:7474](http://0.0.0.0:7474). You shall see the following guide to get you familiar with the database.
 
 ![neodb-browser-guide](./images/neodbguide.png)
 
-## Standalone
+# Standalone
 
 Download and extract the latest release of Neo4j from the [Neo4j Download Center](https://neo4j.com/download-center/#releases) and follow the relevant installation instructions from the [operators manual](https://neo4j.com/docs/operations-manual/current/installation/).
 
@@ -38,7 +36,7 @@ Download the NeoDB browser guide and configure Neo4j accordingly:
 $ pwd
 # $HOME/Downloads/neo4j-community-3.5.4
 $ wget https://raw.githubusercontent.com/COMBAT-TB/combat-tb-db/master/guides/combattb_neodb.html \
--P guides/ \
+-P data/guides/ \
 && echo 'dbms.security.auth_enabled=false' >> conf/neo4j.conf \
 && echo 'dbms.allow_upgrade=true' >> conf/neo4j.conf \
 && echo 'dbms.security.procedures.unrestricted=apoc.*,algo.*' >> conf/neo4j.conf \

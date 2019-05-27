@@ -10,9 +10,9 @@ To view the schema, run:
 call db.schema.visualization
 ```
 
-## Explore NeoDB
+## Exploring NeoDB
 
-### Label counts
+- **Label count**
 
 In Neo4j, node types are called labels. The following query counts the number of nodes per label.
 
@@ -23,7 +23,7 @@ RETURN head(labels(node)) AS label,
 ORDER BY count DESC
 ```
 
-### Relationship type counts
+- **Relationship type count**
 
 The following query counts the number of relationships per type
 
@@ -34,7 +34,7 @@ RETURN type(rel) AS rel_type,
 ORDER BY count DESC
 ```
 
-### Random relationships
+- **Random relationships**
 
 The following query retrieves a random relationship of each
 type. The query goes through every relationship and thus may
@@ -48,7 +48,7 @@ RETURN startNode(rel), rel, endNode(rel)
 
 ## Querying NeoDB
 
-### Genes that encode protein, limiting to results to 25
+- **Genes that encode protein, limiting to results to 25**
 
 The following query finds genes that encode protein.
 
@@ -57,7 +57,7 @@ MATCH(g:Gene)-[r:ENCODES]->(p:Protein)
 RETURN g.name as gene, p.name as protein LIMIT 25
 ```
 
-### Genes that encode a protein that interacts with a known drug target
+- **Genes that encode a protein that interacts with a known drug target**
 
 The following query finds proteins that interact with known drug targets.
 
@@ -67,19 +67,19 @@ RETURN gene.name as Gene, i.score as Score, p2.uniquename as Interactor, drug.na
 ORDER BY Score DESC
 ```
 
-### Find proteins that interact with a certain protein
+- **Find proteins that interact with a certain protein**
 
-The following query finds proteins that interact with a protein that has 'O06295' as the uniquename or UniProtId.
+The following query finds proteins that interact with a protein that has `O06295` as the uniquename or UniProtId.
 
 ```cql
 MATCH p=(:Protein {uniquename:'O06295'})-[r:INTERACTS_WITH]-(:Protein)
 RETURN p
 ```
 
-### Find the top 10 proteins that interact with a specific protein sorted by score
+- **Find the top 10 proteins that interact with a specific protein sorted by score**
 
 The following query finds the top 10 proteins that interact with a
-protein that has 'O06295' as the uniquename or UniProtId. We the return the score,
+protein that has `O06295` as the uniquename or UniProtId. We the return the score,
 sorted in descending order, the UniProtID, and the ProteinName.
 
 ```cql
@@ -88,7 +88,7 @@ RETURN r.score as SCORE, protein.uniquename as UniProtID, protein.name as Protei
 ORDER BY r.score DESC LIMIT 10
 ```
 
-### Drugs that targets multiple proteins
+- **Drugs that targets multiple proteins**
 
 The following query finds drugs that target multiple proteins.
 
@@ -100,7 +100,7 @@ RETURN drug.name AS DrugName, drug.accession AS DrugAcc, ProteinSet, ProteinSetS
 ORDER BY ProteinSetSize DESC
 ```
 
-### Proteins targeted by multiple drugs
+- **Proteins targeted by multiple drugs**
 
 The following query finds proteins targeted by multiple drugs.
 
@@ -112,7 +112,7 @@ WHERE DrugCount > 1
 RETURN Proteins, ProteinFunctions, DrugCount, DrugNames ORDER BY DrugCount DESC
 ```
 
-### Which proteins are likely to infer drug resistance (DR) if mutated
+- **Which proteins are likely to infer drug resistance (DR) if mutated**
 
 Proteins known to be associated with DR have known mutations
 
@@ -121,7 +121,7 @@ MATCH(d:Drug)--(:Variant)--(g)--(p:Protein)
 RETURN distinct(p.name) as Protein, g.name as Gene, d.name as Drug
 ```
 
-### Which proteins are targeted by a specific drug (Isoniazid)
+- **Which proteins are targeted by a specific drug (Isoniazid)**
 
 The following query finds proteins targeted by Isoniazid.
 
@@ -130,7 +130,7 @@ MATCH(drug:Drug {name: "Isoniazid"})-[r:TARGET]-(protein:Protein)
 RETURN drug,r,protein
 ```
 
-### Which proteins are indirectly targeted by a specific drug
+- **Which proteins are indirectly targeted by a specific drug**
 
 The following query finds proteins that are indirectly targeted by Rifampicin.
 
