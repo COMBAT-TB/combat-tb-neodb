@@ -68,7 +68,7 @@ The betweenness centrality of a `Protein` in a functional network is a metric th
 Proteins with higher rank of betweenness are expected to ensure the connectivity between proteins in the functional network and are able to bridge or disconnect connected components.
 
 ```cql
-CALL algo.betweenness.stream("Protein","INTERACTS_WITH",{direction:'out'})
+CALL algo.betweenness.stream("Protein", "INTERACTS_WITH", {direction:'out'})
 YIELD nodeId, centrality
 MATCH (protein:Protein) WHERE id(protein) = nodeId
 RETURN protein.uniquename AS protein,centrality

@@ -5,6 +5,9 @@ COPY dc/plugins/* plugins/
 
 ENV NEO4J_CONTRIB="https://github.com/neo4j-contrib"
 
+RUN wget "${NEO4J_CONTRIB}/neo4j-graph-algorithms/releases/download/3.5.4.0/graph-algorithms-algo-3.5.4.0.jar" -P plugins/ \
+    && wget "${NEO4J_CONTRIB}/neo4j-apoc-procedures/releases/download/3.5.0.3/apoc-3.5.0.3-all.jar" -P plugins/ 
+
 ENV NEO4J_AUTH=none \
     NEO4J_ACCEPT_LICENSE_AGREEMENT=yes \
     # NEO4J_dbms_read__only=true \
@@ -15,9 +18,6 @@ ENV NEO4J_AUTH=none \
     NEO4J_dbms_allow__upgrade=true \
     NEO4J_dbms_allow__format__migration=true \
     NEO4J_browser_post__connect__cmd='config; play http://localhost:7474/guides/combattb_neodb.html' 
-
-RUN wget "${NEO4J_CONTRIB}/neo4j-graph-algorithms/releases/download/3.5.4.0/graph-algorithms-algo-3.5.4.0.jar" -P plugins/ \
-    && wget "${NEO4J_CONTRIB}/neo4j-apoc-procedures/releases/download/3.5.0.3/apoc-3.5.0.3-all.jar" -P plugins/ 
 
 RUN echo 'dbms.security.procedures.whitelist=apoc.*, algo.*' >> conf/neo4j.conf \
     && echo 'dbms.security.procedures.unrestricted=apoc.*, algo.*' >> conf/neo4j.conf \
