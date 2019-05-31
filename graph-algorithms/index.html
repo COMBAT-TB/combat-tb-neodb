@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Graph Algorithms in NeoDB - COMBAT-TB NeoDB</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Graph Algorithms in NeoDB";
+    var mkdocs_page_input_path = "graph-algorithms.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> COMBAT-TB NeoDB</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Welcome to NeoDB's documentation!</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../installation/">Installation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../example-cypher-queries/">Example Cypher Queries</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Graph Algorithms in NeoDB</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#graph-algorithms-in-neodb">Graph Algorithms in NeoDB</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#centrality-algorithms">Centrality algorithms</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">COMBAT-TB NeoDB</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Graph Algorithms in NeoDB</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="graph-algorithms-in-neodb">Graph Algorithms in NeoDB</h1>
+<p>The <a href="https://github.com/neo4j-contrib/neo4j-graph-algorithms">neo4j-graph-algorithms</a> library
+provides efficiently implemented, parallel versions of common graph algorithms for Neo4j, exposed as Cypher procedures.</p>
+<p>In this section, we are going to use some of the centrality measures employed by <a href="https://doi.org/10.1016/j.jtbi.2014.07.031">Melak and Gakkahar</a> to identify the most central proteins from protein–protein interaction network of <em>Mycobacterium tuberculosis</em> H37Rv which was retrieved from <a href="https://string-db.org/">STRING</a> by hypothesizing these proteins would be important to alter the function of the network (<a href="https://doi.org/10.1016/j.jtbi.2014.07.031">Melak and Gakkahar, 2014</a>).</p>
+<p><strong>This is to illustrate the utility of graph analytics. It is not meant to replicate the work done in the above mentioned paper.</strong></p>
+<h2 id="centrality-algorithms">Centrality algorithms</h2>
+<p>Centrality algorithms determine the importance of distinct nodes in a network.</p>
+<h3 id="degree-centrality-direct-importance">Degree Centrality: Direct Importance</h3>
+<p><a href="https://neo4j.com/docs/graph-algorithms/3.5/algorithms/degree-centrality/">Degree centrality</a> measures the number of incoming and outgoing relationships from a node.</p>
+<p>The degree or connectivity of a <code>Protein</code> is the number of links
+connected to it, that is, the number of its interacting neighbours which is determined by counting the number of edges connected to a node.</p>
+<p>The degree centrality measure ranks the potential of an individual node in the network based on its connectivity and it provides an indicator of its influence on the biological processes occurring in the organism, meaning that a protein with higher degree tends to contribute to several processes, and potentially be a key protein in the functioning of the system (<a href="https://doi.org/10.1016/j.jtbi.2014.07.031">Melak and Gakkahar, 2014</a>).</p>
+<p>The following query returns <code>Proteins</code> that have the most <code>incoming</code> interactors.</p>
+<pre><code class="cql">CALL algo.degree.stream(&quot;Protein&quot;, &quot;INTERACTS_WITH&quot;, {direction: &quot;incoming&quot;})
+YIELD nodeId, score
+RETURN algo.asNode(nodeId).uniquename AS protein,
+    algo.asNode(nodeId).name AS name,
+    score AS incoming_interactors
+ORDER BY incoming_interactors DESC
+</code></pre>
+
+<p>The following query returns <code>Proteins</code> that have the most <code>outgoing</code> interactors.</p>
+<pre><code class="cql">CALL algo.degree.stream(&quot;Protein&quot;, &quot;INTERACTS_WITH&quot;, {direction: &quot;outgoing&quot;})
+YIELD nodeId, score
+RETURN algo.asNode(nodeId).uniquename AS protein,
+    algo.asNode(nodeId).name AS name,
+    score AS outgoing_interactors
+ORDER BY outgoing_interactors DESC
+</code></pre>
+
+<h3 id="closeness-centrality-average-farness-inverse-distance">Closeness Centrality: Average Farness (inverse distance)</h3>
+<p><a href="https://neo4j.com/docs/graph-algorithms/3.5/algorithms/closeness-centrality/">Closeness centrality</a> is a way of detecting nodes that are able to spread information very efficiently through a graph.</p>
+<p>The closeness centrality of a node measures the centrality of a
+node based on how close it is to other nodes in the network. The smaller the total distance of a node to other nodes, the higher its closeness is. The distance between two nodes is defined as the length of the shortest path between them. We calculate closeness centrality measure for a node by inverting the sum of the distances from it to other nodes in the network.</p>
+<p>The closeness measure is high for a <code>Protein</code> that is central since it has a shorter distance on average to other proteins.</p>
+<pre><code class="cql">CALL algo.closeness.stream(&quot;Protein&quot;, &quot;INTERACTS_WITH&quot;)
+YIELD nodeId, centrality
+RETURN algo.asNode(nodeId).uniquename AS protein, centrality
+ORDER BY centrality DESC
+LIMIT 20;
+</code></pre>
+
+<h3 id="betweenness-centrality-shortest-weighted-path">Betweenness Centrality: Shortest (weighted) Path</h3>
+<p><a href="https://neo4j.com/docs/graph-algorithms/3.5/algorithms/betweenness-centrality/">Betweenness centrality</a> is a way of detecting the amount of influence a node has over the flow of information in a graph. It is often used to find nodes that serve as a bridge from one part of a graph to another.</p>
+<p>The betweenness centrality of a <code>Protein</code> in a functional network is a metric that expresses its influence relative to other proteins within the network. It is based on the proportion of shortest paths between other proteins passing through the protein target and shows the importance of a protein for the transmission of information between other proteins in the network. This metric provides an indication of the number of pair-wise proteins connected indirectly by the protein target through their direct functional connections (<a href="https://doi.org/10.1016/j.jtbi.2014.07.031">Melak and Gakkahar, 2014</a>).</p>
+<p>Proteins with higher rank of betweenness are expected to ensure the connectivity between proteins in the functional network and are able to bridge or disconnect connected components.</p>
+<pre><code class="cql">CALL algo.betweenness.stream(&quot;Protein&quot;, &quot;INTERACTS_WITH&quot;, {direction:'out'})
+YIELD nodeId, centrality
+MATCH (protein:Protein) WHERE id(protein) = nodeId
+RETURN protein.uniquename AS protein,centrality
+ORDER BY centrality DESC;
+</code></pre>
+
+<h3 id="transitive-importance">Transitive Importance</h3>
+<h4 id="eigenvector-centrality">Eigenvector Centrality</h4>
+<p>Like degree centrality, the Eigenvector Centrality algorithm measures a node’s transitive influence by counting the number of links it has to other nodes within the network. However, it goes a step further by also taking into account how well connected a node is, and how many links their connections have, and so on through the network.</p>
+<p>A high Eigenvector centrality score indicates a strong influence over other nodes in the network. It is useful because it indicates not just direct influence, but also implies influence over nodes more than one ‘hop’ away.</p>
+<p>The following will run the algorithm and stream results normalized using <code>max</code> (divide all scores by the maximum score).</p>
+<pre><code class="cql">CALL algo.eigenvector.stream(&quot;Protein&quot;, &quot;INTERACTS_WITH&quot;, {normalization: &quot;max&quot;})
+YIELD nodeId, score
+RETURN algo.asNode(nodeId).uniquename AS protein,score
+ORDER BY score DESC
+</code></pre>
+
+<h4 id="pagerank">PageRank</h4>
+<p><a href="https://neo4j.com/docs/graph-algorithms/3.5/algorithms/page-rank/">PageRank</a>, a variant of <a href="https://neo4j.com/docs/graph-algorithms/current/algorithms/eigenvector-centrality/">Eigenvector Centrality</a>, is an algorithm that measures the transitive influence or connectivity of nodes.</p>
+<p>It uses links between nodes as a measure of importance. Each node in a network is assigned a score based upon its number of incoming links (its ‘indegree’). These links are also weighted depending on the relative score of its originating node.</p>
+<p>Nodes with many incoming links are influential, and nodes to which they are connected share some of that influence.</p>
+<p>Like Eigenvector centrality, PageRank can help uncover influential or important nodes whose reach extends beyond just their direct connections.</p>
+<p>We can use this algorithm to find important <code>Proteins</code> based not only on whether they <code>INTERACT_WITH</code> a lots of <code>Proteins</code>, but whether those <code>Proteins</code> are themselves important.</p>
+<p>The following will run the algorithm and stream results.</p>
+<pre><code class="cql">CALL algo.pageRank.stream(&quot;Protein&quot;, &quot;INTERACTS_WITH&quot;, {iterations:20, dampingFactor:0.85})
+YIELD nodeId, score
+RETURN algo.asNode(nodeId).uniquename AS protein,score
+ORDER BY score DESC
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../example-cypher-queries/" class="btn btn-neutral" title="Example Cypher Queries"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../example-cypher-queries/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

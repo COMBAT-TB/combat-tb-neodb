@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Example Cypher Queries - COMBAT-TB NeoDB</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Example Cypher Queries";
+    var mkdocs_page_input_path = "example-cypher-queries.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> COMBAT-TB NeoDB</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Welcome to NeoDB's documentation!</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../installation/">Installation</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Example Cypher Queries</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#cypher">Cypher</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#example-cypher-queries">Example Cypher Queries</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../graph-algorithms/">Graph Algorithms in NeoDB</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">COMBAT-TB NeoDB</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Example Cypher Queries</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="cypher">Cypher</h1>
+<p>Cypher is a declarative graph query language that allows for expressive and efficient querying and updating of the graph. Cypher is designed to be simple, yet powerful; highly complicated database queries can be easily expressed, enabling you to focus on your domain, instead of getting lost in database access.</p>
+<p>Point your browser to <a href="http://0.0.0.0:7474">localhost:7474</a> to access the Neo4j browser.</p>
+<p>On cold boot, Neo4j has nothing cached yet, and needs to go to disk for all records.
+Once records are cached, you will see greatly improved performance.
+One technique that is widely employed is to “warm the cache”.</p>
+<p>To warm the cache to improve performance from cold start, run:</p>
+<pre><code class="cql">CALL apoc.warmup.run
+</code></pre>
+
+<p>This will load all nodes and relationships into memory.</p>
+<p>To view the schema, run:</p>
+<pre><code class="cql">call db.schema.visualization
+</code></pre>
+
+<h2 id="example-cypher-queries">Example Cypher Queries</h2>
+<h3 id="exploring-combat-tb-neodb">Exploring COMBAT-TB NeoDB</h3>
+<h4 id="label-count">Label count</h4>
+<p>In Neo4j, node types are called labels. The following query counts the number of nodes per label.</p>
+<pre><code class="cql">MATCH(node)
+RETURN head(labels(node)) AS label,
+  count(*) AS count
+ORDER BY count DESC
+</code></pre>
+
+<h4 id="relationship-type-count">Relationship type count</h4>
+<p>The following query counts the number of relationships per type</p>
+<pre><code class="cql">MATCH()-[rel]-&gt;()
+RETURN type(rel) AS rel_type,
+  count(*) AS count
+ORDER BY count DESC
+</code></pre>
+
+<h4 id="random-relationships">Random relationships</h4>
+<p>The following query retrieves a random relationship of each
+type. The query goes through every relationship and thus may
+take several seconds.</p>
+<pre><code class="cql">MATCH()-[rel]-&gt;() WITH type(rel) AS rel_type, collect(rel) AS rels
+WITH rels[toInteger(rand() * size(rels))] AS rel
+RETURN startNode(rel), rel, endNode(rel)
+</code></pre>
+
+<h3 id="querying-combat-tb-neodb">Querying COMBAT-TB NeoDB</h3>
+<h4 id="genes-that-encode-protein-limiting-to-results-to-25">Genes that encode protein, limiting to results to 25</h4>
+<p>The following query finds genes that encode protein.</p>
+<pre><code class="cql">MATCH(g:Gene)-[r:ENCODES]-&gt;(p:Protein)
+RETURN g.name as gene, p.name as protein LIMIT 25
+</code></pre>
+
+<h4 id="genes-that-encode-a-protein-that-interacts-with-a-known-drug-target">Genes that encode a protein that interacts with a known drug target</h4>
+<p>The following query finds proteins that interact with known drug targets.</p>
+<pre><code class="cql">MATCH p=(gene:Gene)-[:ENCODES]-(p1:Protein)-[i:INTERACTS_WITH]-(p2:Protein)-[:TARGET]-(drug:Drug)
+RETURN gene.name as Gene, i.score as Score, p2.uniquename as Interactor, drug.name as Drug
+ORDER BY Score DESC
+</code></pre>
+
+<h4 id="find-proteins-that-interact-with-a-certain-protein">Find proteins that interact with a certain protein</h4>
+<p>The following query finds proteins that interact with a protein that has <code>O06295</code> as the uniquename or UniProtId.</p>
+<pre><code class="cql">MATCH p=(:Protein {uniquename:'O06295'})-[r:INTERACTS_WITH]-(:Protein)
+RETURN p
+</code></pre>
+
+<h4 id="find-the-top-10-proteins-that-interact-with-a-specific-protein-sorted-by-score">Find the top 10 proteins that interact with a specific protein sorted by score</h4>
+<p>The following query finds the top 10 proteins that interact with a
+protein that has <code>O06295</code> as the uniquename or UniProtId. We the return the score,
+sorted in descending order, the UniProtID, and the ProteinName.</p>
+<pre><code class="cql">MATCH p=(protein)-[r:INTERACTS_WITH]-(:Protein {uniquename:'O06295'})
+RETURN r.score as SCORE, protein.uniquename as UniProtID, protein.name as ProteinName
+ORDER BY r.score DESC LIMIT 10
+</code></pre>
+
+<h4 id="drugs-that-targets-multiple-proteins">Drugs that targets multiple proteins</h4>
+<p>The following query finds drugs that target multiple proteins.</p>
+<pre><code class="cql">MATCH(p:Protein)-[:TARGET]-(drug) WITH drug, count(p) AS ProteinSetSize,
+    collect(protein.uniquename) AS ProteinSet
+WHERE ProteinSetSize &gt; 1
+RETURN drug.name AS DrugName, drug.accession AS DrugAcc, ProteinSet, ProteinSetSize
+ORDER BY ProteinSetSize DESC
+</code></pre>
+
+<h4 id="proteins-targeted-by-multiple-drugs">Proteins targeted by multiple drugs</h4>
+<p>The following query finds proteins targeted by multiple drugs.</p>
+<pre><code class="cql">MATCH(drug:Drug)-[:TARGET]-(protein) WITH protein, count(drug) as DrugCount,
+  collect(drug.name) as DrugNames, protein.uniquename as Proteins,
+  protein.function as ProteinFunctions
+WHERE DrugCount &gt; 1
+RETURN Proteins, ProteinFunctions, DrugCount, DrugNames ORDER BY DrugCount DESC
+</code></pre>
+
+<h4 id="which-proteins-are-likely-to-infer-drug-resistance-dr-if-mutated">Which proteins are likely to infer drug resistance (DR) if mutated</h4>
+<p>The following query finds proteins known to be associated with DR mutations</p>
+<pre><code class="cql">MATCH(d:Drug)--(:Variant)--(g)--(p:Protein)
+RETURN distinct(p.name) as Protein, g.name as Gene, d.name as Drug
+</code></pre>
+
+<h4 id="which-proteins-are-targeted-by-a-specific-drug-isoniazid">Which proteins are targeted by a specific drug (Isoniazid)</h4>
+<p>The following query finds proteins targeted by Isoniazid.</p>
+<pre><code class="cql">MATCH(drug:Drug {name: &quot;Isoniazid&quot;})-[r:TARGET]-(protein:Protein)
+RETURN drug,r,protein
+</code></pre>
+
+<h4 id="which-proteins-are-indirectly-targeted-by-a-specific-drug">Which proteins are indirectly targeted by a specific drug</h4>
+<p>The following query finds proteins that are indirectly targeted by Rifampicin.</p>
+<pre><code class="cql">MATCH(drug:Drug {name: &quot;Rifampicin&quot;})--(:Variant)--(g:Gene)--(p:Protein) RETURN *
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../graph-algorithms/" class="btn btn-neutral float-right" title="Graph Algorithms in NeoDB">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../installation/" class="btn btn-neutral" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../installation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../graph-algorithms/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

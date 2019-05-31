@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Installation - COMBAT-TB NeoDB</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Installation";
+    var mkdocs_page_input_path = "installation.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> COMBAT-TB NeoDB</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Welcome to NeoDB's documentation!</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Installation</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#using-docker">Using docker</a></li>
+    
+
+    <li class="toctree-l2"><a href="#standalone">Standalone</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../example-cypher-queries/">Example Cypher Queries</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../graph-algorithms/">Graph Algorithms in NeoDB</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">COMBAT-TB NeoDB</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Installation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="using-docker">Using docker</h1>
+<p>The fastest was to get a local installation is by using <code>docker</code> and <code>docker-compose</code></p>
+<p><em>Prerequisites</em></p>
+<ul>
+<li><a href="https://www.docker.com/">docker</a></li>
+<li><a href="https://docs.docker.com/compose/overview/">docker-compose</a></li>
+</ul>
+<p>Assuming you have <a href="https://www.docker.com/">docker</a> and <a href="https://docs.docker.com/compose/overview/">docker-compose</a> installed.</p>
+<pre><code class="sh">$ git clone https://github.com/COMBAT-TB/combat-tb-db.git
+$ cd combat-tb-db
+$ docker-compose up --build -d
+Building
+</code></pre>
+
+<p>Once the server is running, visit <a href="http://0.0.0.0:7474">http://localhost:7474</a>. You shall see the following guide to get you familiar with the database.</p>
+<p><img alt="neodb-browser-guide" src="../images/neodbguide.png" /></p>
+<h1 id="standalone">Standalone</h1>
+<p>Download and extract the latest release of Neo4j from the <a href="https://neo4j.com/download-center/#releases">Neo4j Download Center</a> and follow the relevant installation instructions from the <a href="https://neo4j.com/docs/operations-manual/current/installation/">operators manual</a>.</p>
+<p><code>cd</code> into Neo4j directory:</p>
+<pre><code class="sh">$ cd ~/Downloads/neo4j-community-3.5.4
+</code></pre>
+
+<p>Download the NeoDB browser guide and configure Neo4j accordingly:</p>
+<pre><code class="sh">$ pwd
+# $HOME/Downloads/neo4j-community-3.5.4
+$ wget https://raw.githubusercontent.com/COMBAT-TB/combat-tb-db/master/guides/combattb_neodb.html \
+-P data/guides/ \
+&amp;&amp; echo 'dbms.security.auth_enabled=false' &gt;&gt; conf/neo4j.conf \
+&amp;&amp; echo 'dbms.allow_upgrade=true' &gt;&gt; conf/neo4j.conf \
+&amp;&amp; echo 'dbms.security.procedures.unrestricted=apoc.*,algo.*' &gt;&gt; conf/neo4j.conf \
+&amp;&amp; echo 'dbms.security.procedures.whitelist=apoc.*, algo.*' &gt;&gt; conf/neo4j.conf \
+&amp;&amp; echo 'dbms.unmanaged_extension_classes=extension.web=/guides' &gt;&gt; conf/neo4j.conf \
+&amp;&amp; echo 'org.neo4j.server.guide.directory=data/guides' &gt;&gt; conf/neo4j.conf \
+&amp;&amp; echo 'browser.post_connect_cmd=config; play http://localhost:7474/guides/combattb_neodb.html' &gt;&gt; conf/neo4j.conf \
+&amp;&amp; echo 'browser.remote_content_hostname_whitelist=*' &gt;&gt; conf/neo4j.conf
+</code></pre>
+
+<p>Download and extract the <a href="https://ndownloader.figshare.com/files/15192035">COMBAT-TB NeoDB</a>:</p>
+<pre><code class="sh">$ pwd
+# $HOME/Downloads/neo4j-community-3.5.4
+$ wget &quot;https://ndownloader.figshare.com/files/15192035&quot; \
+    -O neodb_db_data.tar.bz2
+$ tar -xjvf neodb_db_data.tar.bz2
+$ cp -R databases/ data/
+</code></pre>
+
+<p>Download the <a href="https://github.com/neo4j-contrib/neo4j-apoc-procedures">APOC Procedures</a> and <a href="https://github.com/neo4j-contrib/neo4j-graph-algorithms">Graph Algorithms</a> binary jars, and place then in the <code>$NEO4J_HOME/plugins</code> folder:</p>
+<pre><code class="sh">$ pwd
+# $HOME/Downloads/neo4j-community-3.5.4
+$ export NEO4J_CONTRIB=&quot;https://github.com/neo4j-contrib&quot;
+$ wget &quot;${NEO4J_CONTRIB}/neo4j-graph-algorithms/releases/download/3.5.4.0/graph-algorithms-algo-3.5.4.0.jar&quot; -P plugins/ \
+  &amp;&amp; wget &quot;${NEO4J_CONTRIB}/neo4j-apoc-procedures/releases/download/3.5.0.3/apoc-3.5.0.3-all.jar&quot; -P plugins/
+</code></pre>
+
+<p>Run Neo4j as a background process:</p>
+<pre><code class="sh">$ pwd
+# $HOME/Downloads/neo4j-community-3.5.4
+$ bin/neo4j start
+</code></pre>
+
+<p>and visit <a href="http://localhost:7474">http://localhost:7474</a>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../example-cypher-queries/" class="btn btn-neutral float-right" title="Example Cypher Queries">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Welcome to NeoDB's documentation!"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../example-cypher-queries/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,9 +1,0 @@
-site_name: COMBAT-TB NeoDB
-nav:
-  - Welcome to NeoDB's documentation!: index.md
-  - Installation: installation.md
-  - Example Cypher Queries: example-cypher-queries.md
-  - Graph Algorithms in NeoDB: graph-algorithms.md
-
-  # - About: about.md
-theme: readthedocs
