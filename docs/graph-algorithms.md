@@ -1,7 +1,6 @@
 # Graph Algorithms in NeoDB
 
-The [neo4j-graph-algorithms](https://github.com/neo4j-contrib/neo4j-graph-algorithms) library
-provides efficiently implemented, parallel versions of common graph algorithms for Neo4j, exposed as Cypher procedures.
+The [neo4j-graph-algorithms](https://github.com/neo4j-contrib/neo4j-graph-algorithms) library provides efficiently implemented, parallel versions of common graph algorithms for Neo4j, exposed as Cypher procedures.
 
 In this section, we are going to use some of the centrality measures employed by [Melak and Gakkahar](https://doi.org/10.1016/j.jtbi.2014.07.031) to identify the most central proteins from protein–protein interaction network of *Mycobacterium tuberculosis* H37Rv which was retrieved from [STRING](https://string-db.org/) by hypothesizing these proteins would be important to alter the function of the network ([Melak and Gakkahar, 2014](https://doi.org/10.1016/j.jtbi.2014.07.031)).
 
