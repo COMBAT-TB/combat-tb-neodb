@@ -7,7 +7,6 @@ verify_ssl = true
 mkdocs = "*"
 pytest = "==3.4.0"
 
-
 [packages]
 asn1crypto = "==0.24.0"
 attrs = "==17.4.0"
