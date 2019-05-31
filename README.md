@@ -14,9 +14,9 @@ ability to explore data interactively by linking well-known, curated and widely 
 ## Installation
 
 To avoid the trouble of environment setup,
-[running the database in a Docker container](https://combat-tb-db.readthedocs.io/en/latest/installation/#using-docker) is highly recommended.
+[running the database in a Docker container](http://combattb.org/combat-tb-db/installation/#using-docker) is highly recommended.
 
-Otherwise, a manual installation guide can be found [here](https://combat-tb-db.readthedocs.io/en/latest/installation/#standalone).
+Otherwise, a manual installation guide can be found [here](http://combattb.org/combat-tb-db/installation/#standalone).
 
 ![neodb-browser-guide](docs/images/neodbguide.png)
 
