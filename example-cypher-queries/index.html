@@ -115,10 +115,10 @@
                 <h1 id="cypher">Cypher</h1>
 <p>Cypher is a declarative graph query language that allows for expressive and efficient querying and updating of the graph. Cypher is designed to be simple, yet powerful; highly complicated database queries can be easily expressed, enabling you to focus on your domain, instead of getting lost in database access.</p>
 <p>Point your browser to <a href="http://0.0.0.0:7474">localhost:7474</a> to access the Neo4j browser.</p>
-<p>On cold boot, Neo4j has nothing cached yet, and needs to go to disk for all records.
+<p>On cold boot, Neo4j has nothing cached, and needs to go to disk for all records.
 Once records are cached, you will see greatly improved performance.
 One technique that is widely employed is to “warm the cache”.</p>
-<p>To warm the cache to improve performance from cold start, run:</p>
+<p>To warm the cache, run:</p>
 <pre><code class="cql">CALL apoc.warmup.run
 </code></pre>
 
