@@ -1,13 +1,30 @@
-# Introduction
+## [COMBAT-TB](https://combattb.org/) *NeoDB*
+
+<p align="center">
+  <img  src="./images/logo.png">
+</p>
+<p align="center">
+Fostering Tuberculosis research through integrative analysis using graph database technologies.
+</p>
 
 [COMBAT-TB](https://combattb.org/) NeoDB is a free and open source integrated _M.tuberculosis (M.tb)_ ‘omics’ knowledge-base. NeoDB is based on Neo4j and enables researchers to execute complex federated queries by linking well-known, curated and widely used _M.tb_ data resources, and supplementary TB variants data from published literature. NeoDB was created by binding the labeled property graph model to a consensus-controlled ontology.
 
-## Motivation
+## Purpose
 
-Tuberculosis (TB) is a significant global health threat, with one-third of the population infected with its causative agent *Mycobacterium tuberculosis (M.tb)*. Its mortality rate declined by 37% between 2000 and 2016, however, this period also saw an exponential growth in multi drug resistant TB (MDR-TB) and extensively drug resistant TB (XDR-TB) ([WHO., 2017](https://apps.who.int/iris/handle/10665/254762)). Globally, researchers have been responding with a plethora of heterogeneous TB databases with each focusing on different subsets of TB data and present limited options for data integration thus impeding the chances of integrative analysis. Although each database can provide answers to certain questions in its scope, it falls short in answering questions that require federated queries across multiple domains of biological knowledge.
+To enable _M.tuberculosis (M.tb)_ researchers to execute *ad hoc* complex federated queries with the
+ability to explore data interactively by linking well-known, curated and widely used biological data resources, and supplementary TB variants data from published literature.
 
-[Mycobrowser](https://mycobrowser.epfl.ch/) remains the criterion curated annotation for M.tb. However, information for each genome is presented as separate web database and applications, with no available tools for comparative analysis and visualization of results. The availability of different *M.tb* genomes and `omics` datasets necessitates a computational platform that can seamlessly integrate a range of data, enabling bioinformaticians to leverage the data via federated queries thus fostering the discovery of new associations between datasets and the validation of existing hypotheses.
+## Installation
 
-## NeoDB Graph Model
+To avoid the trouble of environment setup,
+[running the database in a Docker container](https://combattb.org/combat-tb-neodb/installation/#using-docker) is highly recommended.
 
-![neodb-browser-guide](./images/model.png)
+Otherwise, a manual installation guide can be found [here](https://combattb.org/combat-tb-neodb/installation/#standalone).
+
+## NeoDB Graph Model (Schema)
+
+![NeoDB_MODEL](./images/neodbschema.png)
+
+## Issues
+
+Please report any issues [here](https://github.com/COMBAT-TB/combat-tb-db/issues).

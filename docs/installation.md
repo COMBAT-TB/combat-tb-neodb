@@ -10,7 +10,7 @@ _Prerequisites_
 Assuming you have [docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/overview/) installed.
 
 ```sh
-$ git clone https://github.com/COMBAT-TB/combat-tb-db.git
+$ git clone https://github.com/COMBAT-TB/combat-tb-neodb.git
 $ cd combat-tb-db
 $ docker-compose up --build -d
 Building
@@ -35,7 +35,7 @@ Download the NeoDB browser guide and configure Neo4j accordingly:
 ```sh
 $ pwd
 # $HOME/Downloads/neo4j-community-3.5.4
-$ wget https://raw.githubusercontent.com/COMBAT-TB/combat-tb-db/master/guides/combattb_neodb.html \
+$ wget https://raw.githubusercontent.com/COMBAT-TB/combat-tb-neodb/master/guides/combattb_neodb.html \
 -P data/guides/ \
 && echo 'dbms.security.auth_enabled=false' >> conf/neo4j.conf \
 && echo 'dbms.allow_upgrade=true' >> conf/neo4j.conf \

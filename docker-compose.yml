@@ -1,5 +1,11 @@
 version: "2"
 services:
+  nginx:
+    restart: always
+    build: nginx/
+    network_mode: "bridge"
+    ports:
+      - "80:80"
   db:
     restart: always
     build: .
@@ -21,12 +27,7 @@ services:
   dc:
     build: dc/
     network_mode: "bridge"
-  # es:
-  #   restart: always
-  #   build: esdata/
-  #   network_mode: "bridge"
-  #   ports:
-  #     - "9200:9200"
+    
 networks:
   default:
     driver: bridge

@@ -107,8 +107,6 @@ ENV/
 .envrc
 site/
 
-nginx/
-
 #  Local .terraform directories
 **/.terraform/*
 

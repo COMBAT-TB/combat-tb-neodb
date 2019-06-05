@@ -14,12 +14,14 @@ ability to explore data interactively by linking well-known, curated and widely 
 ## Installation
 
 To avoid the trouble of environment setup,
-[running the database in a Docker container](http://combattb.org/combat-tb-db/installation/#using-docker) is highly recommended.
+[running the database in a Docker container](https://combattb.org/combat-tb-neodb/installation/#using-docker) is highly recommended.
 
-Otherwise, a manual installation guide can be found [here](http://combattb.org/combat-tb-db/installation/#standalone).
+Otherwise, a manual installation guide can be found [here](https://combattb.org/combat-tb-neodb/installation/#standalone).
 
-![neodb-browser-guide](docs/images/neodbguide.png)
+## NeoDB Graph Model (Schema)
+
+![NeoDB_MODEL](docs/images/neodbschema.png)
 
 ## Issues
 
-Please report any issues [here](https://github.com/COMBAT-TB/combat-tb-db/issues).
+Please report any issues [here](https://github.com/COMBAT-TB/combat-tb-neodb/issues).
