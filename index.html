@@ -53,13 +53,15 @@
     <a class="current" href=".">Welcome to NeoDB's documentation!</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#introduction">Introduction</a></li>
+    <li class="toctree-l2"><a href="#combat-tb-neodb">COMBAT-TB NeoDB</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#motivation">Motivation</a></li>
+            <li><a class="toctree-l3" href="#purpose">Purpose</a></li>
         
-            <li><a class="toctree-l3" href="#neodb-graph-model">NeoDB Graph Model</a></li>
+            <li><a class="toctree-l3" href="#installation">Installation</a></li>
+        
+            <li><a class="toctree-l3" href="#issues">Issues</a></li>
         
         </ul>
     
@@ -114,13 +116,22 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="introduction">Introduction</h1>
+                <h1 id="combat-tb-neodb"><a href="https://combattb.org/">COMBAT-TB</a> <em>NeoDB</em></h1>
+<p align="center">
+  <img  src="./images/logo.png">
+</p>
+
 <p><a href="https://combattb.org/">COMBAT-TB</a> NeoDB is a free and open source integrated <em>M.tuberculosis (M.tb)</em> ‘omics’ knowledge-base. NeoDB is based on Neo4j and enables researchers to execute complex federated queries by linking well-known, curated and widely used <em>M.tb</em> data resources, and supplementary TB variants data from published literature. NeoDB was created by binding the labeled property graph model to a consensus-controlled ontology.</p>
-<h2 id="motivation">Motivation</h2>
-<p>Tuberculosis (TB) is a significant global health threat, with one-third of the population infected with its causative agent <em>Mycobacterium tuberculosis (M.tb)</em>. Its mortality rate declined by 37% between 2000 and 2016, however, this period also saw an exponential growth in multi drug resistant TB (MDR-TB) and extensively drug resistant TB (XDR-TB) (<a href="https://apps.who.int/iris/handle/10665/254762">WHO., 2017</a>). Globally, researchers have been responding with a plethora of heterogeneous TB databases with each focusing on different subsets of TB data and present limited options for data integration thus impeding the chances of integrative analysis. Although each database can provide answers to certain questions in its scope, it falls short in answering questions that require federated queries across multiple domains of biological knowledge.</p>
-<p><a href="https://mycobrowser.epfl.ch/">Mycobrowser</a> remains the criterion curated annotation for M.tb. However, information for each genome is presented as separate web database and applications, with no available tools for comparative analysis and visualization of results. The availability of different <em>M.tb</em> genomes and <code>omics</code> datasets necessitates a computational platform that can seamlessly integrate a range of data, enabling bioinformaticians to leverage the data via federated queries thus fostering the discovery of new associations between datasets and the validation of existing hypotheses.</p>
-<h2 id="neodb-graph-model">NeoDB Graph Model</h2>
-<p><img alt="neodb-browser-guide" src="images/model.png" /></p>
+<h2 id="purpose">Purpose</h2>
+<p>To enable <em>M.tuberculosis (M.tb)</em> researchers to execute <em>ad hoc</em> complex federated queries with the
+ability to explore data interactively by linking well-known, curated and widely used biological data resources, and supplementary TB variants data from published literature.</p>
+<h2 id="installation">Installation</h2>
+<p>To avoid the trouble of environment setup,
+<a href="https://combattb.org/combat-tb-neodb/installation/#using-docker">running the database in a Docker container</a> is highly recommended.</p>
+<p>Otherwise, a manual installation guide can be found <a href="https://combattb.org/combat-tb-neodb/installation/#standalone">here</a>.</p>
+<p><img alt="neodb-browser-guide" src="images/neodbguide.png" /></p>
+<h2 id="issues">Issues</h2>
+<p>Please report any issues <a href="https://github.com/COMBAT-TB/combat-tb-db/issues">here</a>.</p>
               
             </div>
           </div>
@@ -169,5 +180,5 @@
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-06-05 13:53:06
+Build Date UTC : 2019-06-06 06:52:58
 -->
