@@ -120,31 +120,33 @@
                 <h1 id="python">Python</h1>
 <p><a href="https://www.neo4j.com/">Neo4j</a> provides several interfaces for multiple programming languages including <a href="https://www.python.org/">Python</a>, a predominant language in bioinformatics.</p>
 <p>The Neo4j community has contributed a range of driver options when it comes to <a href="https://neo4j.com/developer/python/">working with the database via Python</a>. These range from lightweight to comprehensive driver packages.</p>
-<p>This section provides an overview of how to connecting to Neo4j from Python.</p>
 <p>We are going to use a python package called <a href="https://github.com/COMBAT-TB/combattbmodel">combattbmodel</a>. We developed <code>combattbmodel</code> to model the NeoDB schema using <a href="https://py2neo.org/v3/">py2neo</a>, a client library and toolkit for working with Neo4j from within Python applications and from the command line. This package enables bioinformaticians to interact with NeoDB using pure Python.</p>
-<p>See https://github.com/COMBAT-TB/combattbmodel for more information.</p>
 <p>To install combattbmodel, run:</p>
 <pre><code class="sh">$ pip install -i https://test.pypi.org/simple/ combattbmodel
 ...
 </code></pre>
 
-<p>The above command will also install py2neo.</p>
-<p>Using Python, it is possible to perform federated queries in NeoDB.</p>
-<p><em>Assuming you have a NeoDB instance running on <code>localhost</code>. If not, kindly change the <code>host</code> parameter.</em></p>
+<p>The simplest way to try out a connection to NeoDB is via the console. Once you have <a href="https://combattb.org/combat-tb-neodb/installation/">started a local NeoDb instance</a>, open a new Python console and enter the following code:</p>
+<pre><code class="sh">&gt;&gt;&gt; from py2neo import Graph
+&gt;&gt;&gt; graph = Graph(host='localhost', password='')
+</code></pre>
+
 <h2 id="example-python-queries">Example Python Queries</h2>
 <h3 id="exploring-combat-tb-neodb">Exploring COMBAT-TB NeoDB</h3>
 <h4 id="node-labels-currently-defined-within-the-graph">Node labels currently defined within the graph</h4>
-<pre><code class="sh">&gt;&gt;&gt; from py2neo import Graph
-&gt;&gt;&gt; graph = Graph(host='localhost', password='')
-&gt;&gt;&gt; graph.node_labels
+<pre><code class="sh">&gt;&gt;&gt; graph.node_labels
 frozenset({'Organism', 'GOTerm', 'Pathway', 'Variant', 'TRna', 'PseudoGene', 'CallSet', 'Gene', 'RRna', 'DbXref', 'Protein', 'NCRna', 'Drug', 'InterProTerm', 'Publication', 'VariantSet', 'Author', 'Chromosome', 'Location', 'MRna', 'CDS'})
+</code></pre>
+
+<h4 id="relationship-types-currently-defined-within-the-graph">Relationship types currently defined within the graph</h4>
+<pre><code class="sh">&gt;&gt;&gt; graph.relationship_types
+frozenset({'INTERACTS_WITH', 'PUBLISHED_IN', 'PART_OF', 'LOCATED_AT', 'OCCURS_IN', 'BELONGS_TO', 'ASSOCIATED_WITH', 'INVOLVED_IN', 'CAPABLE_OF', 'RESISTANT_TO', 'HAS_VARIANT', 'IS_A', 'XREF', 'ENCODES', 'REGULATES', 'LOCATED_ON', 'DERIVES_FROM', 'CALL_SET', 'WROTE', 'TARGET'})
+&gt;&gt;&gt;
 </code></pre>
 
 <h3 id="querying-combat-tb-neodb">Querying COMBAT-TB NeoDB</h3>
 <h4 id="finding-known-variants-from-a-list-of-genes-of-interest-katg-and-gyrb">Finding known variants from a list of genes of interest (katG and gyrB)</h4>
-<pre><code class="sh">&gt;&gt;&gt; from py2neo import Graph
-&gt;&gt;&gt; graph = Graph(host='localhost', password='')
-&gt;&gt;&gt; from combattbmodel.vcfmodel import Variant
+<pre><code class="sh">&gt;&gt;&gt; from combattbmodel.vcfmodel import Variant
 &gt;&gt;&gt; genes = ['katG', 'gyrB']
 &gt;&gt;&gt; for v in Variant.select(graph):
 ...     for g in v.occurs_in:
