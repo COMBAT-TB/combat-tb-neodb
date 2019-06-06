@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Python - COMBAT-TB NeoDB</title>
+  <title>Interacting with NeoDB using Python - COMBAT-TB NeoDB</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Python";
+    var mkdocs_page_name = "Interacting with NeoDB using Python";
     var mkdocs_page_input_path = "python-example.md";
     var mkdocs_page_url = null;
   </script>
@@ -63,6 +63,23 @@
     <a class="" href="../cypher-example/">Interacting with NeoDB using Cypher</a>
 	    </li>
           
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Interacting with NeoDB using Python</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#python">Python</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#example-python-queries">Example Python Queries</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
             <li class="toctree-l1">
 		
     <a class="" href="../graph-algorithms/">Graph Algorithms in NeoDB</a>
@@ -90,7 +107,7 @@
     
       
     
-    <li>Python</li>
+    <li>Interacting with NeoDB using Python</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -101,81 +118,56 @@
             <div class="section">
               
                 <h1 id="python">Python</h1>
-<p>Cypher is a declarative graph query language that allows for expressive and efficient querying and updating of the graph. Cypher is designed to be simple, yet powerful; highly complicated database queries can be easily expressed, enabling you to focus on your domain, instead of getting lost in database access.</p>
-<p>This guide provides an overview of how to connecting to Neo4j from Python.</p>
+<p><a href="https://www.neo4j.com/">Neo4j</a> provides several interfaces for multiple programming languages including <a href="https://www.python.org/">Python</a>, a predominant language in bioinformatics.</p>
+<p>The Neo4j community has contributed a range of driver options when it comes to <a href="https://neo4j.com/developer/python/">working with the database via Python</a>. These range from lightweight to comprehensive driver packages.</p>
+<p>This section provides an overview of how to connecting to Neo4j from Python.</p>
+<p>We are going to use a python package called <a href="https://github.com/COMBAT-TB/combattbmodel">combattbmodel</a>. We developed <code>combattbmodel</code> to model the NeoDB schema using <a href="https://py2neo.org/v3/">py2neo</a>, a client library and toolkit for working with Neo4j from within Python applications and from the command line. This package enables bioinformaticians to interact with NeoDB using pure Python.</p>
+<p>See https://github.com/COMBAT-TB/combattbmodel for more information.</p>
+<p>To install combattbmodel, run:</p>
+<pre><code class="sh">$ pip install -i https://test.pypi.org/simple/ combattbmodel
+...
+</code></pre>
+
+<p>The above command will also install py2neo.</p>
+<p>Using Python, it is possible to perform federated queries in NeoDB.</p>
+<blockquote>
+<p>We assuming you have a NeoDB instance running on <code>localhost</code>. If not, kindly change the <code>host</code> parameter.</p>
+</blockquote>
 <h2 id="example-python-queries">Example Python Queries</h2>
+<h3 id="exploring-combat-tb-neodb">Exploring COMBAT-TB NeoDB</h3>
+<h4 id="node-labels-currently-defined-within-the-graph">Node labels currently defined within the graph</h4>
+<pre><code class="sh">&gt;&gt;&gt; from py2neo import Graph
+&gt;&gt;&gt; graph = Graph(host='localhost', password='')
+&gt;&gt;&gt; graph.node_labels
+frozenset({'Organism', 'GOTerm', 'Pathway', 'Variant', 'TRna', 'PseudoGene', 'CallSet', 'Gene', 'RRna', 'DbXref', 'Protein', 'NCRna', 'Drug', 'InterProTerm', 'Publication', 'VariantSet', 'Author', 'Chromosome', 'Location', 'MRna', 'CDS'})
+</code></pre>
+
 <h3 id="querying-combat-tb-neodb">Querying COMBAT-TB NeoDB</h3>
-<pre><code class="python">from py2neo import Graph
-graph = Graph()
-
-</code></pre>
-
-<h4 id="genes-that-encode-protein-limiting-to-results-to-25">Genes that encode protein, limiting to results to 25</h4>
-<p>The following query finds genes that encode protein.</p>
-<pre><code class="cql">MATCH(g:Gene)-[r:ENCODES]-&gt;(p:Protein)
-RETURN g.name as gene, p.name as protein LIMIT 25
-</code></pre>
-
-<h4 id="genes-that-encode-a-protein-that-interacts-with-a-known-drug-target">Genes that encode a protein that interacts with a known drug target</h4>
-<p>The following query finds proteins that interact with known drug targets.</p>
-<pre><code class="cql">MATCH p=(gene:Gene)-[:ENCODES]-(p1:Protein)-[i:INTERACTS_WITH]-(p2:Protein)-[:TARGET]-(drug:Drug)
-RETURN gene.name as Gene, i.score as Score, p2.uniquename as Interactor, drug.name as Drug
-ORDER BY Score DESC
-</code></pre>
-
-<h4 id="find-proteins-that-interact-with-a-certain-protein">Find proteins that interact with a certain protein</h4>
-<p>The following query finds proteins that interact with a protein that has <code>O06295</code> as the uniquename or UniProtId.</p>
-<pre><code class="cql">MATCH p=(:Protein {uniquename:'O06295'})-[r:INTERACTS_WITH]-(:Protein)
-RETURN p
-</code></pre>
-
-<h4 id="find-the-top-10-proteins-that-interact-with-a-specific-protein-sorted-by-score">Find the top 10 proteins that interact with a specific protein sorted by score</h4>
-<p>The following query finds the top 10 proteins that interact with a
-protein that has <code>O06295</code> as the uniquename or UniProtId. We the return the score,
-sorted in descending order, the UniProtID, and the ProteinName.</p>
-<pre><code class="cql">MATCH p=(protein)-[r:INTERACTS_WITH]-(:Protein {uniquename:'O06295'})
-RETURN r.score as SCORE, protein.uniquename as UniProtID, protein.name as ProteinName
-ORDER BY r.score DESC LIMIT 10
-</code></pre>
-
-<h4 id="drugs-that-targets-multiple-proteins">Drugs that targets multiple proteins</h4>
-<p>The following query finds drugs that target multiple proteins.</p>
-<pre><code class="cql">MATCH(p:Protein)-[:TARGET]-(drug) WITH drug, count(p) AS ProteinSetSize,
-    collect(protein.uniquename) AS ProteinSet
-WHERE ProteinSetSize &gt; 1
-RETURN drug.name AS DrugName, drug.accession AS DrugAcc, ProteinSet, ProteinSetSize
-ORDER BY ProteinSetSize DESC
-</code></pre>
-
-<h4 id="proteins-targeted-by-multiple-drugs">Proteins targeted by multiple drugs</h4>
-<p>The following query finds proteins targeted by multiple drugs.</p>
-<pre><code class="cql">MATCH(drug:Drug)-[:TARGET]-(protein) WITH protein, count(drug) as DrugCount,
-  collect(drug.name) as DrugNames, protein.uniquename as Proteins,
-  protein.function as ProteinFunctions
-WHERE DrugCount &gt; 1
-RETURN Proteins, ProteinFunctions, DrugCount, DrugNames ORDER BY DrugCount DESC
-</code></pre>
-
-<h4 id="which-proteins-are-likely-to-infer-drug-resistance-dr-if-mutated">Which proteins are likely to infer drug resistance (DR) if mutated</h4>
-<p>The following query finds proteins known to be associated with DR mutations</p>
-<pre><code class="cql">MATCH(d:Drug)--(:Variant)--(g)--(p:Protein)
-RETURN distinct(p.name) as Protein, g.name as Gene, d.name as Drug
-</code></pre>
-
-<h4 id="which-proteins-are-targeted-by-a-specific-drug-isoniazid">Which proteins are targeted by a specific drug (Isoniazid)</h4>
-<p>The following query finds proteins targeted by Isoniazid.</p>
-<pre><code class="cql">MATCH(drug:Drug {name: &quot;Isoniazid&quot;})-[r:TARGET]-(protein:Protein)
-RETURN drug,r,protein
-</code></pre>
-
-<h4 id="which-proteins-are-indirectly-targeted-by-a-specific-drug">Which proteins are indirectly targeted by a specific drug</h4>
-<p>The following query finds proteins that are indirectly targeted by Rifampicin.</p>
-<pre><code class="cql">MATCH(drug:Drug {name: &quot;Rifampicin&quot;})--(:Variant)--(g:Gene)--(p:Protein) RETURN *
+<h4 id="finding-known-variants-from-a-list-of-genes-of-interest-katg-and-gyrb">Finding known variants from a list of genes of interest (katG and gyrB)</h4>
+<pre><code class="sh">&gt;&gt;&gt; from py2neo import Graph
+&gt;&gt;&gt; graph = Graph(host='localhost', password='')
+&gt;&gt;&gt; from combattbmodel.vcfmodel import Variant
+&gt;&gt;&gt; genes = ['katG', 'gyrB']
+&gt;&gt;&gt; for v in Variant.select(graph):
+...     for g in v.occurs_in:
+...             if g.name in genes:
+...                     print(g.name, v.pos, v.consequence)
+...
+gyrB 6620 Asp461Asn
 </code></pre>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../graph-algorithms/" class="btn btn-neutral float-right" title="Graph Algorithms in NeoDB">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../cypher-example/" class="btn btn-neutral" title="Interacting with NeoDB using Cypher"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -199,6 +191,10 @@ RETURN drug,r,protein
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href="../cypher-example/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../graph-algorithms/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
