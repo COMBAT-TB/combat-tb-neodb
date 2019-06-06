@@ -133,19 +133,29 @@
 
 <h2 id="example-python-queries">Example Python Queries</h2>
 <h3 id="exploring-combat-tb-neodb">Exploring COMBAT-TB NeoDB</h3>
-<h4 id="node-labels-currently-defined-within-the-graph">Node labels currently defined within the graph</h4>
+<h4 id="node-labels-currently-defined">Node labels currently defined</h4>
+<p>The set of node labels currently defined within the graph.</p>
 <pre><code class="sh">&gt;&gt;&gt; graph.node_labels
 frozenset({'Organism', 'GOTerm', 'Pathway', 'Variant', 'TRna', 'PseudoGene', 'CallSet', 'Gene', 'RRna', 'DbXref', 'Protein', 'NCRna', 'Drug', 'InterProTerm', 'Publication', 'VariantSet', 'Author', 'Chromosome', 'Location', 'MRna', 'CDS'})
+&gt;&gt;&gt;
 </code></pre>
 
-<h4 id="relationship-types-currently-defined-within-the-graph">Relationship types currently defined within the graph</h4>
+<h4 id="relationship-types-currently-defined">Relationship types currently defined</h4>
+<p>The set of relationship types currently defined within the graph.</p>
 <pre><code class="sh">&gt;&gt;&gt; graph.relationship_types
 frozenset({'INTERACTS_WITH', 'PUBLISHED_IN', 'PART_OF', 'LOCATED_AT', 'OCCURS_IN', 'BELONGS_TO', 'ASSOCIATED_WITH', 'INVOLVED_IN', 'CAPABLE_OF', 'RESISTANT_TO', 'HAS_VARIANT', 'IS_A', 'XREF', 'ENCODES', 'REGULATES', 'LOCATED_ON', 'DERIVES_FROM', 'CALL_SET', 'WROTE', 'TARGET'})
 &gt;&gt;&gt;
 </code></pre>
 
+<h4 id="open-neo4j-browser">Open Neo4j browser</h4>
+<p>Open a page pointing at the Neo4j browser for this graph.</p>
+<pre><code class="sh">&gt;&gt;&gt; graph.open_browser()
+&gt;&gt;&gt;
+</code></pre>
+
 <h3 id="querying-combat-tb-neodb">Querying COMBAT-TB NeoDB</h3>
-<h4 id="finding-known-variants-from-a-list-of-genes-of-interest-katg-and-gyrb">Finding known variants from a list of genes of interest (katG and gyrB)</h4>
+<h4 id="finding-known-variants-from-a-list-of-genes-of-interest">Finding known variants from a list of genes of interest</h4>
+<p>Find known variants in <code>katG</code> and <code>gyrB</code> genes</p>
 <pre><code class="sh">&gt;&gt;&gt; from combattbmodel.vcfmodel import Variant
 &gt;&gt;&gt; genes = ['katG', 'gyrB']
 &gt;&gt;&gt; for v in Variant.select(graph):
