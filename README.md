@@ -1,14 +1,14 @@
-# COMBAT-TB NeoDB
+# COMBAT-TB-NeoDB
 
-[![Build Status](https://travis-ci.org/COMBAT-TB/combat-tb-db.svg?branch=master)](https://travis-ci.org/COMBAT-TB/combat-tb-db) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1219127.svg)](https://doi.org/10.5281/zenodo.1219127) [![Documentation Status](https://readthedocs.org/projects/combat-tb-db/badge/?version=latest)](https://combat-tb-db.readthedocs.io/en/latest/?badge=latest)
+[![Build Status](https://travis-ci.org/COMBAT-TB/combat-tb-neodb.svg?branch=master)](https://travis-ci.org/COMBAT-TB/combat-tb-neodb) [![Documentation Status](https://readthedocs.org/projects/combat-tb-db/badge/?version=latest)](https://combat-tb-db.readthedocs.io/en/latest/?badge=latest)
 
-[![Docker Repository on Quay](https://quay.io/repository/combat-tb/combattb-db/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/combattb-db) [![Docker Repository on Quay](https://quay.io/repository/combat-tb/combattb-dc/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/combattb-dc) [![Docker Repository on Quay](https://quay.io/repository/combat-tb/combattb-es/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/combattb-es)
+[COMBAT-TB](https://combattb.org/)-NeoDB: fostering Tuberculosis research through integrative analysis using graph database technologies.
 
-[COMBAT-TB](https://combattb.org/) NeoDB: fostering Tuberculosis research through integrative analysis using graph database technologies.
+Combat-tb-neodb is an integrated _M.tuberculosis (M.tb)_ ‘omics’ knowledge-base. NeoDB is based on Neo4j and enables researchers to execute complex federated queries by linking well-known, curated and widely used _M.tb_ data resources, and supplementary Tuberculosis variants data from published literature. NeoDB was created by binding the labeled property graph model to a consensus-controlled ontology.
 
 ## Purpose
 
-To enable _M.tuberculosis (M.tb)_ researchers to execute *ad hoc* complex federated queries with the
+To enable _M.tb_ researchers to execute *ad hoc* complex federated queries with the
 ability to explore data interactively by linking well-known, curated and widely used _M.tb_ data resources, and supplementary TB variants data from published literature.
 
 ## Installation
@@ -18,7 +18,7 @@ To avoid the trouble of environment setup,
 
 Otherwise, a manual installation guide can be found [here](https://combattb.org/combat-tb-neodb/installation/#standalone).
 
-## NeoDB Graph Model (Schema)
+## [COMBAT-TB](https://combattb.org/)-NeoDB Graph Model
 
 ![NeoDB_MODEL](docs/images/neodbschema.png)
 
