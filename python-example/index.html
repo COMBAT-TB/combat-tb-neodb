@@ -160,10 +160,18 @@ frozenset({'INTERACTS_WITH', 'PUBLISHED_IN', 'PART_OF', 'LOCATED_AT', 'OCCURS_IN
 &gt;&gt;&gt; genes = ['katG', 'gyrB']
 &gt;&gt;&gt; for v in Variant.select(graph):
 ...     for g in v.occurs_in:
-...             if g.name in genes:
-...                     print(g.name, v.pos, v.consequence)
+...         if g.name in genes:
+...             print(g.name, v.pos, v.consequence)
 ...
 gyrB 6620 Asp461Asn
+</code></pre>
+
+<p>Alternatively:</p>
+<pre><code class="sh">&gt;&gt;&gt; for gene in genes:
+...     for v in list(Variant.select(graph).where(f”_.gene=~’(?i).*{gene}.*’”)):
+...         print(g.name, v.pos, v.consequence)
+...
+katG 2155168 Ser315Thr
 </code></pre>
               
             </div>
