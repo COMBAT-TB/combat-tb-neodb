@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Interacting with NeoDB using Cypher - COMBAT-TB NeoDB</title>
+  <title>Interacting with NeoDB using Cypher - Combat-TB-NeoDB</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -36,7 +36,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> COMBAT-TB NeoDB</a>
+        <a href=".." class="icon icon-home"> Combat-TB-NeoDB</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -50,7 +50,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="..">Welcome to NeoDB's documentation!</a>
+    <a class="" href="..">Welcome to Combat-TB-NeoDB docs!</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -95,7 +95,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">COMBAT-TB NeoDB</a>
+        <a href="..">Combat-TB-NeoDB</a>
       </nav>
 
       
@@ -133,7 +133,7 @@ One technique that is widely employed is to “warm the cache”.</p>
 </code></pre>
 
 <h2 id="example-cypher-queries">Example Cypher Queries</h2>
-<h3 id="exploring-combat-tb-neodb">Exploring COMBAT-TB NeoDB</h3>
+<h3 id="exploring-combat-tb-neodb">Exploring Combat-TB-NeoDB</h3>
 <h4 id="label-count">Label count</h4>
 <p>In Neo4j, node types are called labels. The following query counts the number of nodes per label.</p>
 <pre><code class="cql">MATCH(node)
@@ -159,7 +159,7 @@ WITH rels[toInteger(rand() * size(rels))] AS rel
 RETURN startNode(rel), rel, endNode(rel)
 </code></pre>
 
-<h3 id="querying-combat-tb-neodb">Querying COMBAT-TB NeoDB</h3>
+<h3 id="querying-combat-tb-neodb">Querying Combat-TB-NeoDB</h3>
 <h4 id="genes-that-encode-protein-limiting-to-results-to-25">Genes that encode protein, limiting to results to 25</h4>
 <p>The following query finds genes that encode protein.</p>
 <pre><code class="cql">MATCH(g:Gene)-[r:ENCODES]-&gt;(p:Protein)
