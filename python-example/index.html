@@ -120,13 +120,13 @@
                 <h1 id="python">Python</h1>
 <p><a href="https://www.neo4j.com/">Neo4j</a> provides several interfaces for multiple programming languages including <a href="https://www.python.org/">Python</a>, a predominant language in bioinformatics.</p>
 <p>The Neo4j community has contributed a range of driver options when it comes to <a href="https://neo4j.com/developer/python/">working with the database via Python</a>. These range from lightweight to comprehensive driver packages.</p>
-<p>We are going to use a python package called <a href="https://github.com/COMBAT-TB/combattbmodel">combattbmodel</a>. We developed <code>combattbmodel</code> to model the NeoDB schema using <a href="https://py2neo.org/v3/">py2neo</a>, a client library and toolkit for working with Neo4j from within Python applications and from the command line. This package enables bioinformaticians to interact with NeoDB using pure Python.</p>
-<p>To install combattbmodel, run:</p>
+<p>We are going to use a python package called <a href="https://github.com/COMBAT-TB/combattbmodel">combattbmodel</a>. We developed <code>combattbmodel</code> to model the Combat-TB-NeoDB schema using <a href="https://py2neo.org/v3/">py2neo</a>, a client library and toolkit for working with Neo4j from within Python applications and from the command line. This package enables bioinformaticians to interact with Combat-TB-NeoDB using pure Python.</p>
+<p>To install <code>combattbmodel</code>, run:</p>
 <pre><code class="sh">$ pip install -i https://test.pypi.org/simple/ combattbmodel
 ...
 </code></pre>
 
-<p>The simplest way to try out a connection to NeoDB is via the console. Once you have <a href="https://combattb.org/combat-tb-neodb/installation/">started a local NeoDB instance</a>, open a new Python console and enter the following code:</p>
+<p>The simplest way to try out a connection to Combat-TB-NeoDB is via the console. Once you have <a href="https://combattb.org/combat-tb-neodb/installation/">started a local Combat-TB-NeoDB instance</a>, open a new Python console and enter the following code:</p>
 <pre><code class="sh">&gt;&gt;&gt; from py2neo import Graph
 &gt;&gt;&gt; graph = Graph(host='localhost', password='')
 </code></pre>
