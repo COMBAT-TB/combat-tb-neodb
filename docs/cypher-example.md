@@ -24,7 +24,7 @@ call db.schema.visualization
 
 ## Example Cypher Queries
 
-### Exploring COMBAT-TB NeoDB
+### Exploring Combat-TB-NeoDB
 
 #### Label count
 
@@ -60,7 +60,7 @@ WITH rels[toInteger(rand() * size(rels))] AS rel
 RETURN startNode(rel), rel, endNode(rel)
 ```
 
-### Querying COMBAT-TB NeoDB
+### Querying Combat-TB-NeoDB
 
 #### Genes that encode protein, limiting to results to 25
 

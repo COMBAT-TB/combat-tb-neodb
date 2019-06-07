@@ -1,10 +1,10 @@
-site_name: COMBAT-TB NeoDB
+site_name: Combat-TB-NeoDB
 nav:
-  - Welcome to NeoDB's documentation!: index.md
+  - Combat-TB-NeoDB documentation: index.md
   - Installation: installation.md
-  - Interacting with NeoDB using Cypher : cypher-example.md
-  - Interacting with NeoDB using Python : python-example.md
-  - Graph Algorithms in NeoDB: graph-algorithms.md
+  - Querying using Cypher: cypher-example.md
+  - Querying using Python: python-example.md
+  - Graph Algorithms: graph-algorithms.md
 
   # - About: about.md
 theme: readthedocs

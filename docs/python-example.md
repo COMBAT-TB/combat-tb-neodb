@@ -22,7 +22,7 @@ The simplest way to try out a connection to Combat-TB-NeoDB is via the console. 
 
 ## Example Python Queries
 
-### Exploring COMBAT-TB NeoDB
+### Exploring Combat-TB-NeoDB
 
 #### Node labels currently defined
 
@@ -53,7 +53,7 @@ Open a page pointing at the Neo4j browser for this graph.
 >>>
 ```
 
-### Querying COMBAT-TB NeoDB
+### Querying Combat-TB-NeoDB
 
 #### Finding known variants from a list of genes of interest
 

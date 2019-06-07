@@ -1,4 +1,4 @@
-# Graph Algorithms in NeoDB
+# Graph Algorithms in Combat-TB-NeoDB
 
 The [neo4j-graph-algorithms](https://github.com/neo4j-contrib/neo4j-graph-algorithms) library provides efficiently implemented, parallel versions of common graph algorithms for Neo4j, exposed as Cypher procedures.
 

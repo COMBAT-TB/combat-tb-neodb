@@ -1,4 +1,4 @@
-## [COMBAT-TB](https://combattb.org/) *NeoDB*
+## [Combat-TB](https://combattb.org/)-NeoDB
 
 <p align="center">
   <img  src="./images/logo.png">

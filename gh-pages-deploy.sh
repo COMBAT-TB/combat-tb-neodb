@@ -1,5 +1,5 @@
 #!/bin/bash
-DATE=`date +%Y%m%d`
+date=`date +%Y%m%d`
 directory=site
 branch=gh-pages
 build_command() {
@@ -18,7 +18,7 @@ build_command
 echo -e "\033[0;32mDeploying $branch branch...\033[0m"
 cd $directory &&
   git add --all &&
-  git commit -m "Deploy updates-$DATE" &&
+  git commit -m "Deploy Updates $date" &&
   git push origin $branch
 
 echo -e "\033[0;32mCleaning up...\033[0m"
