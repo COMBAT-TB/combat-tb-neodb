@@ -4,16 +4,16 @@
 
 The Neo4j community has contributed a range of driver options when it comes to [working with the database via Python](https://neo4j.com/developer/python/). These range from lightweight to comprehensive driver packages.
 
-We are going to use a python package called [combattbmodel](https://github.com/COMBAT-TB/combattbmodel). We developed `combattbmodel` to model the NeoDB schema using [py2neo](https://py2neo.org/v3/), a client library and toolkit for working with Neo4j from within Python applications and from the command line. This package enables bioinformaticians to interact with NeoDB using pure Python.
+We are going to use a python package called [combattbmodel](https://github.com/COMBAT-TB/combattbmodel). We developed `combattbmodel` to model the Combat-TB-NeoDB schema using [py2neo](https://py2neo.org/v3/), a client library and toolkit for working with Neo4j from within Python applications and from the command line. This package enables bioinformaticians to interact with Combat-TB-NeoDB using pure Python.
 
-To install combattbmodel, run:
+To install `combattbmodel`, run:
 
 ```sh
 $ pip install -i https://test.pypi.org/simple/ combattbmodel
 ...
 ```
 
-The simplest way to try out a connection to NeoDB is via the console. Once you have [started a local NeoDB instance](https://combattb.org/combat-tb-neodb/installation/), open a new Python console and enter the following code:
+The simplest way to try out a connection to Combat-TB-NeoDB is via the console. Once you have [started a local Combat-TB-NeoDB instance](https://combattb.org/combat-tb-neodb/installation/), open a new Python console and enter the following code:
 
 ```sh
 >>> from py2neo import Graph

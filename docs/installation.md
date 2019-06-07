@@ -11,7 +11,7 @@ Assuming you have [docker](https://www.docker.com/) and [docker-compose](https:/
 
 ```sh
 $ git clone https://github.com/COMBAT-TB/combat-tb-neodb.git
-$ cd combat-tb-db
+$ cd combat-tb-neodb
 $ docker-compose up --build -d
 Building
 ```
@@ -47,7 +47,7 @@ $ wget https://raw.githubusercontent.com/COMBAT-TB/combat-tb-neodb/master/guides
 && echo 'browser.remote_content_hostname_whitelist=*' >> conf/neo4j.conf
 ```
 
-Download and extract the [COMBAT-TB NeoDB](https://ndownloader.figshare.com/files/15192035):
+Download and extract the [Combat-TB-NeoDB](https://ndownloader.figshare.com/files/15192035):
 
 ```sh
 $ pwd
