@@ -116,3 +116,10 @@ site/
 
 # .tfvars files
 *.tfvars
+
+# Certs
+
+*.pem
+*.key
+*.crt
+*cert
