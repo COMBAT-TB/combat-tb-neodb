@@ -8,14 +8,21 @@ In this section, we are going to use some of the centrality measures employed by
 
 ## Centrality algorithms
 
-Centrality algorithms determine the importance of distinct nodes in a network.
+Centrality algorithms are used to understand the roles of particular nodes in a graph and their impact on that network. They are useful because they identify the most important nodes and help us understand group dynamics such as credibility, accessibility, the speed at which things spread, and bridges between groups.
+
+<p align="center">
+  <img  src="https://combattb.org/combat-tb-neodb/images/centalityalgos.png">
+  Representative centrality algorithms (Source:
+  <a href="https://neo4j.com/graph-algorithms-book/">
+  Needham & Hodler, 2019</a>)
+</p>
 
 ### Degree Centrality: Direct Importance
 
 [Degree centrality](https://neo4j.com/docs/graph-algorithms/3.5/algorithms/degree-centrality/) measures the number of incoming and outgoing relationships from a node.
 
 The degree or connectivity of a `Protein` is the number of links
-connected to it, that is, the number of its interacting neighbours which is determined by counting the number of edges connected to a node.
+connected to it, that is, the number of its interacting neighbors which is determined by counting the number of edges connected to a node.
 
 The degree centrality measure ranks the potential of an individual node in the network based on its connectivity and it provides an indicator of its influence on the biological processes occurring in the organism, meaning that a protein with higher degree tends to contribute to several processes, and potentially be a key protein in the functioning of the system ([Melak and Gakkahar, 2014](https://doi.org/10.1016/j.jtbi.2014.07.031)).
 

@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/COMBAT-TB/combat-tb-neodb.svg?branch=master)](https://travis-ci.org/COMBAT-TB/combat-tb-neodb) [![Documentation Status](https://readthedocs.org/projects/combat-tb-db/badge/?version=latest)](https://combat-tb-db.readthedocs.io/en/latest/?badge=latest)
 
-[Combat-TB](https://combattb.org/)-NeoDB: fostering Tuberculosis research through integrative analysis using graph database technologies.
+**[Combat-TB](https://combattb.org/)-NeoDB: fostering Tuberculosis research through integrative analysis using graph database technologies.**
 
 [Combat-TB](https://combattb.org/)-NeoDB is an integrated _M.tuberculosis (M.tb)_ ‘omics’ knowledge-base. NeoDB is based on Neo4j and enables researchers to execute complex federated queries by linking well-known, curated and widely used _M.tb_ data resources, and supplementary Tuberculosis variants data from published literature. [Combat-TB](https://combattb.org/)-NeoDB was created by binding the labeled property graph model to a consensus-controlled ontology.
 
