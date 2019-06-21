@@ -1,6 +1,9 @@
 FROM neo4j:3.5-enterprise
 LABEL Name=combatb-db-dc Maintainer="thoba@sanbi.ac.za"
 
+RUN apt-get update \
+    && apt-get install -y wget openssl apt-utils zip unzip
+    
 COPY dc/plugins/* plugins/
 
 ENV NEO4J_CONTRIB="https://github.com/neo4j-contrib"
