@@ -6,11 +6,9 @@ RUN apk update \
     && mkdir -p /data/guides \
     && apk add --no-cache openssl wget
 
-ENV DB_VERSION="3057235" \
-    # ZENODO_URL="https://zenodo.org/record/${DB_VERSION}/files/neodb-db-data.tar.bz2" \
-    FIGSHARE_URL="https://ndownloader.figshare.com/files/15564509"
+ENV DB_VERSION="3258008"
 
-RUN wget "${FIGSHARE_URL}" \
+RUN wget "https://zenodo.org/record/${DB_VERSION}/files/neodb-db-data.tar.bz2" \
     -O neodb_db_data.tar.bz2 \
     && tar xvfj neodb_db_data.tar.bz2 \
     && rm -rf neodb_db_data.tar.bz2 \

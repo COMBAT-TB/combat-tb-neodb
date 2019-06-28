@@ -6,11 +6,9 @@ RUN apk update \
 
 COPY elasticsearch.yml config/
 
-ENV DB_VERSION="1421060" \
-    # ZENODO="https://zenodo.org/record/${DB_VERSION}/files/gff2neo_es_data.tar.bz2" \
-    FIGSHARE="https://ndownloader.figshare.com/files/15564215"
+ENV DB_VERSION="3258008"
 
-RUN wget "${FIGSHARE}" \
+RUN wget "https://zenodo.org/record/${DB_VERSION}/files/neodb-es-data.tar.bz2" \
     -O neodb_es_data.tar.bz2 \
     && mkdir esdata/ \
     && tar xvfj neodb_es_data.tar.bz2 -C esdata/ \
