@@ -6,6 +6,8 @@ verify_ssl = true
 [dev-packages]
 mkdocs = "*"
 pytest = "==3.4.0"
+pep8 = "*"
+pydocstyle = "*"
 
 [packages]
 asn1crypto = "==0.24.0"

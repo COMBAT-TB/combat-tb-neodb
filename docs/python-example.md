@@ -13,11 +13,17 @@ $ pip install -i https://test.pypi.org/simple/ combattbmodel
 ...
 ```
 
-The simplest way to try out a connection to Combat-TB-NeoDB is via the console. Once you have [started a local Combat-TB-NeoDB instance](https://combattb.org/combat-tb-neodb/installation/), open a new Python console and enter the following code:
+The simplest way to try out a connection to Combat-TB-NeoDB is via the console. Once you have started a [local Combat-TB-NeoDB instance](https://combattb.org/combat-tb-neodb/installation/), open a new Python console and enter the following code:
 
 ```sh
 >>> from py2neo import Graph
 >>> graph = Graph(host='localhost', password='')
+```
+
+If you wish to use [https://neodb.sanbi.ac.za](https://neodb.sanbi.ac.za) instead of setting up a local instance, point `py2neo` to `neodb.sanbi.ac.za` with the `secure` param set to `True`.
+
+```sh
+>>> graph = Graph(host='neodb.sanbi.ac.za', password='', secure=True)
 ```
 
 ## Example Python Queries
