@@ -126,9 +126,13 @@
 ...
 </code></pre>
 
-<p>The simplest way to try out a connection to Combat-TB-NeoDB is via the console. Once you have <a href="https://combattb.org/combat-tb-neodb/installation/">started a local Combat-TB-NeoDB instance</a>, open a new Python console and enter the following code:</p>
+<p>The simplest way to try out a connection to Combat-TB-NeoDB is via the console. Once you have started a <a href="https://combattb.org/combat-tb-neodb/installation/">local Combat-TB-NeoDB instance</a>, open a new Python console and enter the following code:</p>
 <pre><code class="sh">&gt;&gt;&gt; from py2neo import Graph
 &gt;&gt;&gt; graph = Graph(host='localhost', password='')
+</code></pre>
+
+<p>If you wish to use <a href="https://neodb.sanbi.ac.za">https://neodb.sanbi.ac.za</a> instead of setting up a local instance, point <code>py2neo</code> to <code>neodb.sanbi.ac.za</code> with the <code>secure</code> param set to <code>True</code>.</p>
+<pre><code class="sh">&gt;&gt;&gt; graph = Graph(host='neodb.sanbi.ac.za', password='', secure=True)
 </code></pre>
 
 <h2 id="example-python-queries">Example Python Queries</h2>

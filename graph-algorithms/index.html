@@ -133,7 +133,7 @@
 <h3 id="degree-centrality-direct-importance">Degree Centrality: Direct Importance</h3>
 <p><a href="https://neo4j.com/docs/graph-algorithms/3.5/algorithms/degree-centrality/">Degree centrality</a> measures the number of incoming and outgoing relationships from a node.</p>
 <p>The degree or connectivity of a <code>Protein</code> is the number of links
-connected to it, that is, the number of its interacting neighbours which is determined by counting the number of edges connected to a node.</p>
+connected to it, that is, the number of its interacting neighbors which is determined by counting the number of edges connected to a node.</p>
 <p>The degree centrality measure ranks the potential of an individual node in the network based on its connectivity and it provides an indicator of its influence on the biological processes occurring in the organism, meaning that a protein with higher degree tends to contribute to several processes, and potentially be a key protein in the functioning of the system (<a href="https://doi.org/10.1016/j.jtbi.2014.07.031">Melak and Gakkahar, 2014</a>).</p>
 <p>The following query returns <code>Proteins</code> that have the most <code>incoming</code> interactors.</p>
 <pre><code class="cql">CALL algo.degree.stream(&quot;Protein&quot;, &quot;INTERACTS_WITH&quot;, {direction: &quot;incoming&quot;})
