@@ -151,10 +151,10 @@ $ wget https://raw.githubusercontent.com/COMBAT-TB/combat-tb-neodb/master/guides
 &amp;&amp; echo 'browser.remote_content_hostname_whitelist=*' &gt;&gt; conf/neo4j.conf
 </code></pre>
 
-<p>Download and extract the <a href="https://ndownloader.figshare.com/files/15192035">Combat-TB-NeoDB</a>:</p>
+<p>Download and extract the <a href="https://doi.org/10.5281/zenodo.1219127">Combat-TB-NeoDB</a>:</p>
 <pre><code class="sh">$ pwd
 # $HOME/Downloads/neo4j-community-3.5.4
-$ wget &quot;https://ndownloader.figshare.com/files/15192035&quot; \
+$ wget &quot;https://zenodo.org/record/3274226/files/neodb-db-data.tar.bz2&quot; \
     -O neodb_db_data.tar.bz2
 $ tar -xjvf neodb_db_data.tar.bz2
 $ cp -R databases/ data/
@@ -165,7 +165,7 @@ $ cp -R databases/ data/
 # $HOME/Downloads/neo4j-community-3.5.4
 $ export NEO4J_CONTRIB=&quot;https://github.com/neo4j-contrib&quot;
 $ wget &quot;${NEO4J_CONTRIB}/neo4j-graph-algorithms/releases/download/3.5.4.0/graph-algorithms-algo-3.5.4.0.jar&quot; -P plugins/ \
-  &amp;&amp; wget &quot;${NEO4J_CONTRIB}/neo4j-apoc-procedures/releases/download/3.5.0.3/apoc-3.5.0.3-all.jar&quot; -P plugins/
+  &amp;&amp; wget &quot;${NEO4J_CONTRIB}/neo4j-apoc-procedures/releases/download/3.5.0.4/apoc-3.5.0.4-all.jar&quot; -P plugins/
 </code></pre>
 
 <p>Run Neo4j as a background process:</p>
