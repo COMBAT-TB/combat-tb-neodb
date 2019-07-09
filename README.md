@@ -1,6 +1,6 @@
 # [Combat-TB-NeoDB](https://neodb.sanbi.ac.za)
 
-[![Build Status](https://travis-ci.org/COMBAT-TB/combat-tb-neodb.svg?branch=master)](https://travis-ci.org/COMBAT-TB/combat-tb-neodb) [![Documentation Status](https://readthedocs.org/projects/combat-tb-db/badge/?version=latest)](https://combat-tb-db.readthedocs.io/en/latest/?badge=latest) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3258008.svg)](https://doi.org/10.5281/zenodo.3258008)
+[![Build Status](https://travis-ci.org/COMBAT-TB/combat-tb-neodb.svg?branch=master)](https://travis-ci.org/COMBAT-TB/combat-tb-neodb) [![Documentation Status](https://readthedocs.org/projects/combat-tb-db/badge/?version=latest)](https://combat-tb-db.readthedocs.io/en/latest/?badge=latest) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1219127.svg)](https://doi.org/10.5281/zenodo.1219127)
 
 **[Combat-TB](https://combattb.org/)-NeoDB: fostering Tuberculosis research through integrative analysis using graph database technologies.**
 

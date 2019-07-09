@@ -6,7 +6,7 @@ RUN apk update \
     && mkdir -p /data/guides \
     && apk add --no-cache openssl wget
 
-ENV DB_VERSION="3258008"
+ENV DB_VERSION="3274226"
 
 RUN wget "https://zenodo.org/record/${DB_VERSION}/files/neodb-db-data.tar.bz2" \
     -O neodb_db_data.tar.bz2 \
