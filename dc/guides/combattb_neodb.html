@@ -270,7 +270,7 @@ RETURN Proteins,
                 <div class="listingblock">
                   <figure>
                     <pre class="pre-scrollable code runnable">
-MATCH(gene:Gene {uniquename: "Rv0678"}) RETURN Gene</pre>
+MATCH(gene:Gene {uniquename: "Rv0678"}) RETURN gene</pre>
                   </figure>
                 </div>
                 <div class="paragraph">
@@ -279,7 +279,7 @@ MATCH(gene:Gene {uniquename: "Rv0678"}) RETURN Gene</pre>
                 <div class="listingblock">
                   <figure>
                     <pre class="pre-scrollable code runnable">
-MATCH(gene:Gene) WHERE gene.uniquename = "Rv0678" RETURN Gene</pre>
+MATCH(gene:Gene) WHERE gene.uniquename = "Rv0678" RETURN gene</pre>
                   </figure>
                 </div>
               </li>
