@@ -79,6 +79,8 @@
         
             <li><a class="toctree-l3" href="#centrality-algorithms">Centrality algorithms</a></li>
         
+            <li><a class="toctree-l3" href="#community-detection-algorithms">Community detection algorithms</a></li>
+        
         </ul>
     
 
@@ -199,6 +201,34 @@ YIELD nodeId, score
 RETURN algo.asNode(nodeId).uniquename AS protein,score
 ORDER BY score DESC
 </code></pre>
+
+<h2 id="community-detection-algorithms">Community detection algorithms</h2>
+<p>Community detection is a very active field in complex networks analysis, consisting in identifying groups of nodes more densely interconnected relatively to the rest of the network.</p>
+<h3 id="triangle-counting-clustering-coefficient">Triangle Counting / Clustering Coefficient</h3>
+<p>Triangle counting is a community detection graph algorithm that is used to determine the number of triangles passing through each node in the graph. A triangle is a set of three nodes, where each node has a relationship to all other nodes.</p>
+<p>A clustering coefficient is a measure of the degree to which nodes in a graph tend to cluster together.</p>
+<p>The following will count the number of triangles that a node (Protein) is member of, and return a stream with the UniProt ID and triangleCount:</p>
+<pre><code class="cql">CALL algo.triangleCount.stream('Protein', 'INTERACTS_WITH', {concurrency:4})
+YIELD nodeId, triangles, coefficient
+RETURN algo.asNode(nodeId).uniquename AS UniProtID, triangles, coefficient
+ORDER BY coefficient DESC
+</code></pre>
+
+<p>The following will count the number of triangles that a node (Protein) is member of, and write it back. It will return the total triangle count and average clustering coefficient of the interaction network.</p>
+<pre><code class="cql">CALL algo.triangleCount('Protein', 'INTERACTS_WITH',
+  {concurrency:4, write:true, writeProperty:'triangles',clusteringCoefficientProperty:'coefficient'})
+YIELD nodeCount, triangleCount, averageClusteringCoefficient;
+</code></pre>
+
+<p>Result:</p>
+<pre><code class="sh">╒═══════════╤═══════════════╤══════════════════════════════╕
+│&quot;nodeCount&quot;│&quot;triangleCount&quot;│&quot;averageClusteringCoefficient&quot;│
+╞═══════════╪═══════════════╪══════════════════════════════╡
+│3984       │104198         │0.36405616179922706           │
+└───────────┴───────────────┴──────────────────────────────┘
+</code></pre>
+
+<p>The average clustering coefficient of the Protein-Protein interaction network, with <code>3984</code> Proteins, is <code>0.36405616179922706</code>.</p>
               
             </div>
           </div>
