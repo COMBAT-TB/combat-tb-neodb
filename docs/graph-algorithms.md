@@ -118,3 +118,42 @@ YIELD nodeId, score
 RETURN algo.asNode(nodeId).uniquename AS protein,score
 ORDER BY score DESC
 ```
+
+## Community detection algorithms
+
+Community detection is a very active field in complex networks analysis, consisting in identifying groups of nodes more densely interconnected relatively to the rest of the network.
+
+### Triangle Counting / Clustering Coefficient
+
+Triangle counting is a community detection graph algorithm that is used to determine the number of triangles passing through each node in the graph. A triangle is a set of three nodes, where each node has a relationship to all other nodes.
+
+A clustering coefficient is a measure of the degree to which nodes in a graph tend to cluster together.
+
+The following will count the number of triangles that a node (Protein) is member of, and return a stream with the UniProt ID and triangleCount:
+
+```cql
+CALL algo.triangleCount.stream('Protein', 'INTERACTS_WITH', {concurrency:4})
+YIELD nodeId, triangles, coefficient
+RETURN algo.asNode(nodeId).uniquename AS UniProtID, triangles, coefficient
+ORDER BY coefficient DESC
+```
+
+The following will count the number of triangles that a node (Protein) is member of, and write it back. It will return the total triangle count and average clustering coefficient of the interaction network.
+
+```cql
+CALL algo.triangleCount('Protein', 'INTERACTS_WITH',
+  {concurrency:4, write:true, writeProperty:'triangles',clusteringCoefficientProperty:'coefficient'})
+YIELD nodeCount, triangleCount, averageClusteringCoefficient;
+```
+
+Result:
+
+```sh
+╒═══════════╤═══════════════╤══════════════════════════════╕
+│"nodeCount"│"triangleCount"│"averageClusteringCoefficient"│
+╞═══════════╪═══════════════╪══════════════════════════════╡
+│3984       │104198         │0.36405616179922706           │
+└───────────┴───────────────┴──────────────────────────────┘
+```
+
+The average clustering coefficient of the Protein-Protein interaction network, with `3984` Proteins, is `0.36405616179922706`.

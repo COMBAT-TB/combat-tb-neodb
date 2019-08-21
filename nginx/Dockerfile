@@ -9,4 +9,4 @@ RUN apk update \
     -P /usr/share/nginx/html/guide/
 
 COPY nginx.conf /etc/nginx/
-COPY sanbi.pem  sanbi.key  /etc/nginx/ssl/
+COPY SANBI_Wildcard.all.pem SANBI_Wildcard.key  /etc/nginx/ssl/

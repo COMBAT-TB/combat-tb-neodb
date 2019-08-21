@@ -4,7 +4,7 @@ LABEL Name=combatb-db-dc Maintainer="thoba@sanbi.ac.za"
 RUN apk update \
     && apk upgrade \
     && mkdir -p /data/guides \
-    && apk add --no-cache openssl wget
+    && apk add --no-cache openssl wget 
 
 ENV DB_VERSION="3274226"
 
